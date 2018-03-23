@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2018 at 11:18 AM
+-- Generation Time: Mar 23, 2018 at 11:35 AM
 -- Server version: 10.1.10-MariaDB
 -- PHP Version: 7.0.3
 
@@ -53,7 +53,7 @@ CREATE TABLE `form_kontak` (
   `nama_form` varchar(100) NOT NULL,
   `email_form` varchar(100) NOT NULL,
   `pesan_form` text NOT NULL,
-  `tgl_form` date NOT NULL
+  `tgl_form` datetime NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -61,14 +61,17 @@ CREATE TABLE `form_kontak` (
 --
 
 INSERT INTO `form_kontak` (`id_form`, `nama_form`, `email_form`, `pesan_form`, `tgl_form`) VALUES
-(1, 'ada', 'edwinlaksono12@gmail.com', 'da', '0000-00-00'),
-(2, '0', '0', '0', '2018-03-21'),
-(3, '0', '0', '0', '2018-03-21'),
-(4, '0', '0', '0', '2018-03-21'),
-(5, '0', '0', '0', '2018-03-21'),
-(6, 'ali', 'imokhammadali2@gmail.com', 'asdasd', '2018-03-21'),
-(7, 'ali', 'imokhammadali2@gmail.com', 'asdasd', '2018-03-21'),
-(8, 'asdasd', 'imokhammadali2@gmail.com', 'xzczxczxc', '2018-03-21');
+(1, 'ada', 'edwinlaksono12@gmail.com', 'da', '0000-00-00 00:00:00'),
+(2, '0', '0', '0', '2018-03-21 00:00:00'),
+(3, '0', '0', '0', '2018-03-21 00:00:00'),
+(4, '0', '0', '0', '2018-03-21 00:00:00'),
+(5, '0', '0', '0', '2018-03-21 00:00:00'),
+(6, 'ali', 'imokhammadali2@gmail.com', 'asdasd', '2018-03-21 00:00:00'),
+(7, 'ali', 'imokhammadali2@gmail.com', 'asdasd', '2018-03-21 00:00:00'),
+(8, 'asdasd', 'imokhammadali2@gmail.com', 'xzczxczxc', '2018-03-21 00:00:00'),
+(9, 'ASD', 'asd@asd.com', 'XZXCZXCXC', '2018-03-22 00:00:00'),
+(10, 'asd', 'a@a.com', 'zxccx', '0000-00-00 00:00:00'),
+(11, 'zxcxc', 'asd@gmail.com', 'vvfvv', '2018-03-22 10:43:53');
 
 -- --------------------------------------------------------
 
@@ -97,7 +100,7 @@ INSERT INTO `mainmenu` (`seq`, `idmenu`, `nama_menu`, `active_menu`, `icon_class
 (8, 8, 'Administrator', '', 'menu-icon fa fa-user', '#', '', '2017-10-13 17:57:17', NULL),
 (2, 2, 'Slider', '', 'menu-icon fa fa-file-image-o', 'Slider', '', '2017-10-17 17:28:56', NULL),
 (3, 3, 'About', '', 'menu-icon fa fa-newspaper-o', 'About', '', '2017-10-17 17:29:00', NULL),
-(4, 4, 'Produk', '', 'menu-icon fa fa-briefcase', 'Produk', '', '2017-10-17 17:29:05', NULL),
+(4, 4, 'Kamar', '', 'menu-icon fa fa-briefcase', 'Kamar', '', '2018-03-22 08:16:03', NULL),
 (5, 5, 'Gallery', '', 'menu-icon fa fa-file-image-o', 'Gallery', '', '2017-10-17 17:29:09', NULL),
 (6, 6, 'Kontak', '', 'menu-icon fa fa-book', 'Kontak', '', '2017-10-17 17:29:11', NULL),
 (7, 7, 'Video', '', 'menu-icon fa fa-film', 'Video', '', '2017-10-26 21:02:50', NULL);
@@ -126,8 +129,6 @@ CREATE TABLE `submenu` (
 
 INSERT INTO `submenu` (`id_sub`, `nama_sub`, `mainmenu_idmenu`, `active_sub`, `icon_class`, `link_sub`, `sub_akses`, `entry_date`, `entry_user`) VALUES
 (1, 'Entry User', 8, '', '', 'User', '', '2017-10-17 17:28:25', NULL),
-(2, 'Kategori Produk', 4, '', '', 'Produk', '', '2017-10-17 17:34:17', NULL),
-(3, 'Produk', 4, '', '', 'Produk/detail', '', '2018-02-06 04:33:07', NULL),
 (4, 'Album', 5, '', '', 'Gallery', '', '2017-10-17 17:34:34', NULL),
 (5, 'Foto', 5, '', '', 'Gallery/foto', '', '2018-02-06 04:27:39', NULL);
 
@@ -158,7 +159,7 @@ INSERT INTO `tab_akses_mainmenu` (`id`, `id_menu`, `id_level`, `c`, `r`, `u`, `d
 (2, 8, 1, 0, 0, 0, 0, '2017-10-18 18:47:26', ''),
 (3, 2, 1, 0, 1, 0, 0, '2017-10-13 19:29:46', ''),
 (4, 3, 1, 0, 1, 0, 0, '2017-10-14 14:31:55', ''),
-(5, 4, 1, 0, 1, 0, 0, '2017-10-15 19:22:01', ''),
+(9, 4, 1, 0, 1, 0, 0, '2018-03-22 08:09:09', ''),
 (6, 5, 1, 0, 1, 0, 0, '2017-10-15 19:24:32', ''),
 (7, 6, 1, 0, 1, 0, 0, '2017-10-18 18:47:15', ''),
 (8, 7, 1, 0, 1, 0, 0, '2017-10-26 20:52:10', '');
@@ -189,7 +190,6 @@ INSERT INTO `tab_akses_submenu` (`id`, `id_sub_menu`, `id_level`, `c`, `r`, `u`,
 (1, 1, 1, 0, 1, 0, 0, '2017-10-13 17:45:40', ''),
 (2, 2, 1, 0, 1, 0, 0, '2017-10-15 22:59:02', ''),
 (3, 3, 1, 0, 0, 0, 0, '2017-10-18 04:12:32', ''),
-(4, 4, 1, 0, 1, 0, 0, '2017-10-15 22:59:16', ''),
 (5, 5, 1, 0, 0, 0, 0, '2017-10-18 04:12:33', '');
 
 -- --------------------------------------------------------
@@ -232,18 +232,19 @@ CREATE TABLE `tb_album` (
   `id_admin` int(11) DEFAULT NULL,
   `album_title_meta` varchar(200) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `album_deskripsi_meta` varchar(200) DEFAULT NULL,
-  `album_keyword_meta` varchar(200) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL
+  `album_keyword_meta` varchar(200) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `status_album` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_album`
 --
 
-INSERT INTO `tb_album` (`id_album`, `album_nama`, `album_gambar`, `id_admin`, `album_title_meta`, `album_deskripsi_meta`, `album_keyword_meta`) VALUES
-(2, 'Promo', '1.jpg', 1, 'Promo Cakra Tour Pro', '<p>Promo Tour, Cakra Tour Pro, Tour Wisata, Malang Bali Lombok</p>', 'Promo Tour, Cakra Tour Pro, Tour Wisata, Malang Bali Lombok'),
-(3, 'Jatim', 'Jatim.jpg', 1, 'Jatim', '<p>Jatim</p>', 'Jatim'),
-(4, 'Bali', 'Bali.jpg', 1, 'Bali ', '<p>Bali</p>', 'Bali'),
-(5, 'Lombok', 'Lombok.jpg', 1, 'Lombok', '<p>Lombok</p>', 'Lombok');
+INSERT INTO `tb_album` (`id_album`, `album_nama`, `album_gambar`, `id_admin`, `album_title_meta`, `album_deskripsi_meta`, `album_keyword_meta`, `status_album`) VALUES
+(2, 'Kamar', '1.jpg', 1, 'Promo Cakra Tour Pro', '<p>Promo Tour, Cakra Tour Pro, Tour Wisata, Malang Bali Lombok</p>', 'Promo Tour, Cakra Tour Pro, Tour Wisata, Malang Bali Lombok', 0),
+(3, 'Fasilitas', 'Jatim.jpg', 1, 'Jatim', '<p>Jatim</p>', 'Jatim', 0),
+(4, 'Karyawan', 'Bali.jpg', 1, 'Bali ', '<p>Bali</p>', 'Bali', 0),
+(6, 'Profil', 'ss', 1, 'Profil 2010', 'profil', 'profil', 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +255,7 @@ INSERT INTO `tb_album` (`id_album`, `album_nama`, `album_gambar`, `id_admin`, `a
 CREATE TABLE `tb_foto` (
   `id_gallery` int(11) NOT NULL,
   `gallery_nama` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
-  `gallery_gambar` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
+  `gallery_gambar` varchar(250) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
   `id_admin` int(11) DEFAULT NULL,
   `id_album` int(11) DEFAULT NULL,
   `gallery_title_meta` varchar(200) CHARACTER SET latin1 COLLATE latin1_general_ci DEFAULT NULL,
@@ -267,17 +268,15 @@ CREATE TABLE `tb_foto` (
 --
 
 INSERT INTO `tb_foto` (`id_gallery`, `gallery_nama`, `gallery_gambar`, `id_admin`, `id_album`, `gallery_title_meta`, `gallery_deskripsi_meta`, `gallery_keyword_meta`) VALUES
-(22, 'Promo 1', '1.jpg', 1, 2, 'Promo 1', '<p>Promo 1</p>', 'Promo 1 '),
-(23, 'Promo 2', '2.jpg', 1, 2, 'Promo 2', '<p>Promo 2</p>', 'Promo 2'),
-(24, 'Jatim 1', 'fj2.jpg', 1, 3, 'Jatim 1', '<p>Jatim 1</p>', 'Jatim 1'),
-(25, 'Jatim 2', 'fj3.jpg', 1, 3, 'Jatim 2', '<p>Jatim 2</p>', 'Jatim 2'),
-(26, 'Jatim 3', 'fj4.jpg', 1, 3, 'Jatim 3', '<p>Jatim 3</p>', 'Jatim 3'),
-(27, 'Bali 1', 'fb1.jpg', 1, 4, 'Bali 1', '<p>Bali1</p>', 'Bali 1'),
-(28, 'Bali 2', 'fb3.jpg', 1, 4, 'Bali 2', '<p>Bali2</p>', 'Bali 2'),
-(29, 'Bali 3', 'fb4.jpg', 1, 4, 'Bali 3', '<p>Bali3</p>', 'Bali 3'),
-(30, 'Lombok 1', 'fl2.jpg', 1, 5, 'Lombok 1', '<p>Lombok1</p>', 'Lombok 1'),
-(31, 'Lombok 2', 'fl3.jpg', 1, 5, 'Lombok 2', '<p>Lombok2</p>', 'Lombok 2'),
-(32, 'Lombok 3', 'fl4.jpg', 1, 5, 'Lombok 3', '<p>Lombok3</p>', 'Lombok 3');
+(22, 'Kamar Single', 'single1.jpg', 1, 2, 'Promo 1', '<p>Promo 1</p>', 'Promo 1 '),
+(23, 'Kamar Double', 'double1.jpg', 1, 2, 'Promo 2', '<p>Promo 2</p>', 'Promo 2'),
+(24, 'Ruang Rapat', 'rapat.jpg', 1, 3, 'Jatim 1', '<p>Jatim 1</p>', 'Jatim 1'),
+(25, 'Kolam Renang', 'kolam.jpg', 1, 3, 'Jatim 2', '<p>Jatim 2</p>', 'Jatim 2'),
+(26, 'Cafe', 'cafe.jpg', 1, 3, 'Jatim 3', '<p>Jatim 3</p>', 'Jatim 3'),
+(27, 'Ruang Kebugaran', 'fitnes.jpg', 1, 3, 'Bali 1', '<p>Bali1</p>', 'Bali 1'),
+(28, 'Karyawan 1', 'karyawan1.jpg', 1, 4, 'Bali 2', '<p>Bali2</p>', 'Bali 2'),
+(29, 'Karyawan 2', 'karyawan2.jpg', 1, 4, 'Bali 3', '<p>Bali3</p>', 'Bali 3'),
+(33, 'Profil', 'https://www.youtube.com/embed/kUlyFOBT_sw', 1, 6, 'profil', 'profil', 'profil');
 
 -- --------------------------------------------------------
 
@@ -329,7 +328,7 @@ CREATE TABLE `tb_kontak` (
 --
 
 INSERT INTO `tb_kontak` (`id_kontak`, `kontak_lat`, `kontak_long`, `kontak_deskripsi`, `kontak_judul`, `kontak_alamat`, `kontak_telepon`, `kontak_email`, `kontak_subheading`, `kontak_title_meta`, `kontak_deskripsi_meta`, `kontak_keyword_meta`) VALUES
-(1, '-7.9435543', '112.6279327', '<p>Berikut kontak yang bisa dihubungi.</p>', 'Jl. Blimbing', '<p>Batu Malang</p>', '081234567890', 'resort@gmail.com', 'Jika anda memiliki pertanyaan jangan ragu untuk menghubungi kami.', 'resot', '<p>resot</p>', 'resot');
+(1, '-7.9435543', '112.6279327', '<p>Berikut kontak yang bisa dihubungi.</p>', 'Informasi', '<p>Batu Malang</p>', '081234567890', 'resort@gmail.com', 'Jika anda memiliki pertanyaan jangan ragu untuk menghubungi kami.', 'resot', '<p>resot</p>', 'resot');
 
 -- --------------------------------------------------------
 
@@ -382,9 +381,9 @@ CREATE TABLE `tb_slider` (
 --
 
 INSERT INTO `tb_slider` (`id_slider`, `slider_judul`, `slider_deskripsi`, `slider_gambar`, `id_admin`) VALUES
-(1, 'Lorem ipsum dolor sit amet', 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit.', 'slider1.jpg', 1),
-(3, 'Lorem ipsum dolor sit amet', 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit.', 'slider2.jpg', 1),
-(4, 'Lorem ipsum dolor sit amet', 'Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit.', 'slider3.jpg', 1);
+(1, 'Kolam renang', '<p>Kolam renang yang cukup luas.</p>', 'slide_bg_11.jpg', 1),
+(3, 'Kamar nyaman', '<p>Kondisi kamar yang nyaman dan bersih.</p>', 'slide_bg_2.jpg', 1),
+(4, 'Ruang santai', '<p>Terdapat juga ruang untuk bersantai.</p>', 'slide_bg_3.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -427,6 +426,113 @@ CREATE TABLE `tb_video` (
 
 INSERT INTO `tb_video` (`id_video`, `video_judul`, `video_deskripsi`, `frame_video`, `video_title_meta`, `video_keyword_meta`, `video_deskripsi_meta`) VALUES
 (1, 'Tata Janeta', 'Risalah Hati', '<iframe width="560" height="315" src="https://www.youtube.com/embed/C0HFlLxS3j0" frameborder="0" allowfullscreen></iframe>', NULL, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `td_detail_fasilitas`
+--
+
+CREATE TABLE `td_detail_fasilitas` (
+  `id_detail_fasilitas` int(11) NOT NULL,
+  `id_kamar` varchar(10) NOT NULL,
+  `id_fasilitas` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `td_detail_fasilitas`
+--
+
+INSERT INTO `td_detail_fasilitas` (`id_detail_fasilitas`, `id_kamar`, `id_fasilitas`) VALUES
+(1, 'km18-00001', 'fs18-00001'),
+(2, 'km18-00001', 'fs18-00003'),
+(3, 'km18-00001', 'fs18-00004'),
+(4, 'km18-00001', 'fs18-00005'),
+(5, 'km18-00001', 'fs18-00006'),
+(6, 'km18-00001', 'fs18-00007'),
+(7, 'km18-00002', 'fs18-00002'),
+(8, 'km18-00002', 'fs18-00003'),
+(9, 'km18-00002', 'fs18-00004'),
+(10, 'km18-00002', 'fs18-00005'),
+(11, 'km18-00002', 'fs18-00006'),
+(12, 'km18-00002', 'fs18-00007');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tm_fasilitas`
+--
+
+CREATE TABLE `tm_fasilitas` (
+  `id_fasilitas` varchar(10) NOT NULL,
+  `nama_fasilitas` varchar(100) NOT NULL,
+  `gambar_fasilitas` text NOT NULL,
+  `deskripsi_fasilitas` text NOT NULL,
+  `status_fasilitas` int(11) NOT NULL,
+  `id_admin` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tm_fasilitas`
+--
+
+INSERT INTO `tm_fasilitas` (`id_fasilitas`, `nama_fasilitas`, `gambar_fasilitas`, `deskripsi_fasilitas`, `status_fasilitas`, `id_admin`) VALUES
+('fs18-00001', 'Kolam Renang', 'kolam.jpg', 'Kolam renang yang bersih dan luas', 1, 1),
+('fs18-00002', 'Ruang Rapat', 'rapat.jpg', 'Ruang rapat yang lengkap, nyaman dan mewah', 1, 1),
+('fs18-00003', 'Cafe', 'cafe.jpg', 'Cafe yang romantis untuk berdua dengan pasangan anda', 1, 1),
+('fs18-00004', 'Ruang Kebugaran', 'fitnes.jpg', 'Ruang kebugaran disediakan untuk anda yang ingin berolah raga', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tm_gambar_kamar`
+--
+
+CREATE TABLE `tm_gambar_kamar` (
+  `id_gambar_kamar` int(11) NOT NULL,
+  `nama_gambar_kamar` text NOT NULL,
+  `ket_gambar_kamar` text NOT NULL,
+  `status_gambar_kamar` int(11) NOT NULL,
+  `id_kamar` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tm_gambar_kamar`
+--
+
+INSERT INTO `tm_gambar_kamar` (`id_gambar_kamar`, `nama_gambar_kamar`, `ket_gambar_kamar`, `status_gambar_kamar`, `id_kamar`) VALUES
+(1, 'single1.jpg', 'single1', 1, 'km18-00001'),
+(2, 'double1.jpg', 'double1', 1, 'km18-00002');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tm_kamar`
+--
+
+CREATE TABLE `tm_kamar` (
+  `id_kamar` varchar(10) NOT NULL,
+  `nama_kamar` varchar(100) NOT NULL,
+  `deskripsi_kamar` text NOT NULL,
+  `maxdewasa_kamar` int(11) NOT NULL,
+  `maxanak_kamar` int(11) NOT NULL,
+  `hight_kamar` int(11) NOT NULL,
+  `low_kamar` int(11) NOT NULL,
+  `id_admin` int(11) NOT NULL,
+  `kamar_title_meta` varchar(100) NOT NULL,
+  `kamar_deskripsi_meta` text NOT NULL,
+  `kamar_keyword_meta` varchar(250) NOT NULL,
+  `fasilitas_kamar` text NOT NULL,
+  `status_kamar` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tm_kamar`
+--
+
+INSERT INTO `tm_kamar` (`id_kamar`, `nama_kamar`, `deskripsi_kamar`, `maxdewasa_kamar`, `maxanak_kamar`, `hight_kamar`, `low_kamar`, `id_admin`, `kamar_title_meta`, `kamar_deskripsi_meta`, `kamar_keyword_meta`, `fasilitas_kamar`, `status_kamar`) VALUES
+('km18-00001', 'Single Room', 'kamar sendiri', 2, 1, 400000, 300000, 1, 'kamar single', 'kamar single', 'kamar single', '<div class="col-sm-6">\r\n                  <ul class="rooms_desc__services">\r\n                    <li><i class="icon ion-android-person"></i> One king bed</li>\r\n                    <li><i class="icon ion-coffee"></i> Breakfast</li>\r\n                    <li><i class="icon ion-android-sunny"></i> Air conditioning</li>\r\n                  </ul> <!-- .rooms_desc__services -->\r\n                </div>\r\n                <div class="col-sm-6">\r\n                  <ul class="rooms_desc__services">\r\n                    <li><i class="icon ion-wineglass"></i> Mini bar</li>\r\n                    <li><i class="icon ion-monitor"></i> LCD TV</li>\r\n                    <li><i class="icon ion-wifi"></i> Wi-Fi</li>\r\n                  </ul> <!-- .rooms_desc__services -->\r\n                </div>', 1),
+('km18-00002', 'Double Room', 'Kamar Dua', 4, 2, 500000, 400000, 1, 'kamar double', 'kamar double', 'kamar double', '<div class="col-sm-6">\r\n                  <ul class="rooms_desc__services">\r\n                    <li><i class="icon ion-android-people"></i> Double king bed</li>\r\n                    <li><i class="icon ion-coffee"></i> Breakfast</li>\r\n                    <li><i class="icon ion-android-sunny"></i> Air conditioning</li>\r\n                  </ul> <!-- .rooms_desc__services -->\r\n                </div>\r\n                <div class="col-sm-6">\r\n                  <ul class="rooms_desc__services">\r\n                    <li><i class="icon ion-wineglass"></i> Mini bar</li>\r\n                    <li><i class="icon ion-monitor"></i> LCD TV</li>\r\n                    <li><i class="icon ion-wifi"></i> Wi-Fi</li>\r\n                  </ul> <!-- .rooms_desc__services -->\r\n                </div>', 1);
 
 -- --------------------------------------------------------
 
@@ -541,6 +647,30 @@ ALTER TABLE `tb_video`
   ADD PRIMARY KEY (`id_video`);
 
 --
+-- Indexes for table `td_detail_fasilitas`
+--
+ALTER TABLE `td_detail_fasilitas`
+  ADD PRIMARY KEY (`id_detail_fasilitas`);
+
+--
+-- Indexes for table `tm_fasilitas`
+--
+ALTER TABLE `tm_fasilitas`
+  ADD PRIMARY KEY (`id_fasilitas`);
+
+--
+-- Indexes for table `tm_gambar_kamar`
+--
+ALTER TABLE `tm_gambar_kamar`
+  ADD PRIMARY KEY (`id_gambar_kamar`);
+
+--
+-- Indexes for table `tm_kamar`
+--
+ALTER TABLE `tm_kamar`
+  ADD PRIMARY KEY (`id_kamar`);
+
+--
 -- Indexes for table `user_type`
 --
 ALTER TABLE `user_type`
@@ -559,7 +689,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `form_kontak`
 --
 ALTER TABLE `form_kontak`
-  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `mainmenu`
 --
@@ -589,12 +719,12 @@ ALTER TABLE `tb_about`
 -- AUTO_INCREMENT for table `tb_album`
 --
 ALTER TABLE `tb_album`
-  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_album` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `tb_foto`
 --
 ALTER TABLE `tb_foto`
-  MODIFY `id_gallery` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_gallery` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `tb_kategori_produk`
 --
@@ -620,6 +750,16 @@ ALTER TABLE `tb_slider`
 --
 ALTER TABLE `tb_video`
   MODIFY `id_video` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `td_detail_fasilitas`
+--
+ALTER TABLE `td_detail_fasilitas`
+  MODIFY `id_detail_fasilitas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `tm_gambar_kamar`
+--
+ALTER TABLE `tm_gambar_kamar`
+  MODIFY `id_gambar_kamar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `user_type`
 --
