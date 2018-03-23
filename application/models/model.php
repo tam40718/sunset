@@ -67,6 +67,17 @@ class Model extends CI_Model {
 		$this->db->order_by('id_detail', 'DESC');
 		return $this->db->get('tb_produk');
 	}
+	
+	public function album($status){
+		return $this->db->where('status_album',$status)
+						->get('tb_album');
+	}
+	
+	public function foto($status){
+		return $this->db->join('tb_album a','a.id_album=f.id_album')
+						->where('a.status_album',$status)
+						->get('tb_foto f');
+	}
 
 	public function kamar()
 	{
@@ -75,9 +86,37 @@ class Model extends CI_Model {
 						->from('tm_kamar k')
 						->get();
 	}
+
+	public function kamar_rand($id)
+	{
+		return $this->db->join('tm_gambar_kamar gk','k.id_kamar=gk.id_kamar')
+						->where('gk.status_gambar_kamar','1')
+						->where('k.id_kamar !=',$id)
+						->limit(3)
+						->order_by('k.id_kamar','RAND')
+						->from('tm_kamar k')
+						->get();
+	}
+
+	public function kamar_id($id)
+	{
+		return $this->db->join('tm_gambar_kamar gk','k.id_kamar=gk.id_kamar')
+						->where('gk.status_gambar_kamar','1')
+						->where('k.id_kamar',$id)
+						->from('tm_kamar k')
+						->get();
+	}
+	
+	public function gambar_kamar_id($id){
+		return $this->db->where('id_kamar',$id)
+						->where('status_gambar_kamar','1')
+						->get('tm_gambar_kamar');
+	}
 	
 	public function fasilitas(){
-		return $this->db->get('tm_fasilitas');
+		return $this->db->where('status_fasilitas',1)
+						->order_by('id_fasilitas','DESC')
+						->get('tm_fasilitas');
 	}
 	public function getid_fasilitas($id,$order)
 	{

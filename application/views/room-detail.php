@@ -8,7 +8,7 @@
     	  <div class="row">
     	    <div class="col-sm-12">
     	    	<div class="welcome__content">
-							<h1 class="welcome_content__title">Deluxe double room</h1>
+							<h1 class="welcome_content__title"><?php echo $list_kamar->nama_kamar ?></h1>
               <div class="divider blog-divider">
                 <hr class="line1">
                 <hr class="line2">
@@ -27,31 +27,25 @@
     	    <div class="col-sm-7 col-md-8">
     	    	<div class="room_detail__body">
               <div id="room-detail__carousel" class="owl-carousel owl-theme room-detail__gallery">
+                <?php foreach ($list_gambar_kamar as $lgk) { ?>
                 <div class="room_gallery__item">
-                  <img src="<?php echo base_url().'assets/' ?>images/gallery_img1.jpg" class="img-responsive" alt="...">
+                  <img src="<?php echo base_url().'assets/' ?>images/kamar/<?php echo $lgk->nama_gambar_kamar ?>" class="img-responsive" alt="<?php echo $lgk->ket_gambar_kamar ?>">
                 </div> <!-- .room_gallery__item -->
-                <div class="room_gallery__item">
-                  <img src="<?php echo base_url().'assets/' ?>images/gallery_img2.jpg" class="img-responsive" alt="...">
-                </div> <!-- .room_gallery__item -->
-                <div class="room_gallery__item">
-                  <img src="<?php echo base_url().'assets/' ?>images/gallery_img4.jpg" class="img-responsive" alt="...">
-                </div> <!-- .room_gallery__item -->
-                <div class="room_gallery__item">
-                  <img src="<?php echo base_url().'assets/' ?>images/gallery_img7.jpg" class="img-responsive" alt="...">
-                </div> <!-- .room_gallery__item -->
+                <?php } ?>
               </div> <!-- .room-detail__gallery -->
               <div class="room_price__body">
-                <h2 class="room__name">Deluxe double room</h2>
-                <p class="room__price"><span>$165</span> / night</p>
+                <h2 class="room__name"><?php echo $list_kamar->nama_kamar ?></h2>
+                <p class="room__price"><span><?php echo 'RP.'.$list_kamar->hight_kamar ?></span> / Malam</p>
               </div>
-              <p class="subheading">Room description</p>
+              <p class="subheading">Deskripsi Kamar</p>
               <div class="room__desc">
-                A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence. When, while the lovely valley teems with vapour around me and the meridian.
-              </div>
+                <?php echo $list_kamar->deskripsi_kamar ?>
+              </div><hr>
+              <p class="subheading">Fasilitas</p>
               <div class="room__desc">
-                A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine.
+              <?php echo $list_kamar->fasilitas_kamar ?>
               </div>
-              <a href="<?=site_url('home/tampil_reservation');?>" class="btn">Book this room now</a>
+              <a href="<?=site_url('home/tampil_reservation');?>" class="btn">Pesan</a>
             </div> <!-- .room-detail__body -->
             <!-- <div class="room__reviews"> -->
               <!-- <p class="subheading">Room reviews</p> -->
@@ -122,121 +116,56 @@
           </div>
           <div class="col-sm-5 col-md-4">
     	    	<div class="room-detail__sidebar">
-              <div class="room_features__body">
-                <p class="subheading">Room features</p>
-                <ul class="room__features">
-                  <li class="feature__item">
-                    <i class="icon ion-android-people"></i>
-                    <div class="feature_item__title">
-                      Double king bed
-                    </div>
-                  </li>
-                  <li class="feature__item">
-                    <i class="icon ion-coffee"></i>
-                    <div class="feature_item__title">
-                      Breakfast
-                    </div>
-                  </li>
-                  <li class="feature__item">
-                    <i class="icon ion-android-sunny"></i>
-                    <div class="feature_item__title">
-                      Air conditioning
-                    </div>
-                  </li>
-                  <li class="feature__item">
-                    <i class="icon ion-wineglass"></i>
-                    <div class="feature_item__title">
-                      Mini bar
-                    </div>
-                  </li>
-                  <li class="feature__item">
-                    <i class="icon ion-wifi"></i>
-                    <div class="feature_item__title">
-                      Wi-Fi service
-                    </div>
-                  </li>
-                  <li class="feature__item">
-                    <i class="icon ion-model-s"></i>
-                    <div class="feature_item__title">
-                      Free parking
-                    </div>
-                  </li>
-                </ul> <!-- .room__features -->
-              </div> <!-- .room_features__body -->
               <div class="similar__rooms">
-                <p class="subheading">Similar rooms</p>
+                <p class="subheading">Kamar Lainnya</p>
                 <ul class="similar-rooms__list">
+                  <?php foreach ($sidebar as $s) { ?>
                   <li class="list__item">
-                    <a href="#">
+                    <a href="<?=site_url('home/tampil_room_detail/'.$s->id_kamar);?>">
                       <figure class="list_item__body">
-                        <img src="<?php echo base_url().'assets/' ?>images/single_room.jpg" class="img-responsive" alt="...">
+                        <img src="<?php echo base_url().'assets/' ?>images/kamar/<?php echo $s->nama_gambar_kamar ?>" class="img-responsive" alt="<?php echo $s->ket_gambar_kamar ?>">
                         <figcaption>
-                          <h3>Double room</h3>
+                          <h3><?php echo $s->nama_kamar ?></h3>
                           <div class="item__price">
-                            $120 <small>/ night</small>
+                            <?php echo 'RP.'.$s->hight_kamar ?> <small> / Malam</small>
                           </div>
                         </figcaption>
                       </figure> <!-- / .list_item__body -->  
                     </a>
                   </li>  <!-- .list__item -->
-                  <li class="list__item">
-                    <a href="#">
-                      <figure class="list_item__body">
-                        <img src="<?php echo base_url().'assets/' ?>images/double_room.jpg" class="img-responsive" alt="...">
-                        <figcaption>
-                          <h3>Double room</h3>
-                          <div class="item__price">
-                            $98 <small>/ night</small>
-                          </div>
-                        </figcaption>
-                      </figure> <!-- / .list_item__body -->  
-                    </a>
-                  </li>  <!-- .list__item -->
-                  <li class="list__item">
-                    <a href="#">
-                      <figure class="list_item__body">
-                        <img src="<?php echo base_url().'assets/' ?>images/royal_room.jpg" class="img-responsive" alt="...">
-                        <figcaption>
-                          <h3>Family room</h3>
-                          <div class="item__price">
-                            $135 <small>/ night</small>
-                          </div>
-                        </figcaption>
-                      </figure> <!-- / .list_item__body -->
-                    </a>
-                  </li> <!-- .list__item -->
+                  <?php } ?>
                 </ul> <!-- .similar-rooms__list -->
               </div> <!-- .similar__rooms -->
-             <!--  <div class="info__body">
-                <p class="info__title">Information</p>
+              <div class="info__body">
+                <p class="info__title"><?php echo $kontak->kontak_judul;?></p>
                 <ul class="info__content">
                   <li>
-                    <p class="info-text">For more information about rooms please contact us.</p>
+                    <p class="info-text"><?php echo $kontak->kontak_deskripsi;?></p>
                   </li>
                   <li>
                     <i class="icon ion-android-pin"></i>
                     <div class="info-content">
-                      <div class="title">Address</div>
-                      <div class="description">10987 1st Avenue, Lorem City, CA</div>
+                      <div class="title">Alamat</div>
+                      <div class="description"><?php echo $kontak->kontak_alamat;?></div>
                     </div>
                   </li>
                   <li>
                     <i class="icon ion-android-call"></i>
                     <div class="info-content">
-                      <div class="title">Phone / Fax</div>
-                      <div class="description">+45 789 123 4544 / +45 789 123 4848</div>
+                      <div class="title">Telepon</div>
+                      <div class="description"><?php echo $kontak->kontak_telepon;?></div>
                     </div>
                   </li>
                   <li>
                     <i class="icon ion-android-mail"></i>
                     <div class="info-content">
                       <div class="title">E-mail</div>
-                      <div class="description">admin@sunsethotel.com</div>
+                      <div class="description"><?php echo $kontak->kontak_email;?></div>
                     </div>
                   </li>
                 </ul> <!-- .info__content -->
               </div> 
-              <!-- / .info__body --> -->
+              <!-- / .info__body -->
   	    		</div> <!-- .room-detail__sidebar -->
     	    </div>
     	  </div> <!-- / .row -->

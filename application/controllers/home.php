@@ -195,10 +195,14 @@ class Home extends CI_Controller {
 		$this->load->view('reservation');
 		$this->load->view('footer');
 	}
-	function tampil_room_detail(){
+	function tampil_room_detail($id){
 		$data_header = $this->getHeader('room-1');
+		$data['list_kamar'] = $this->Model->kamar_id($id)->row();
+		$data['list_gambar_kamar'] = $this->Model->gambar_kamar_id($id)->result();
+		$data['kontak'] = $this->Model->hubungi()->row();
+		$data['sidebar'] = $this->Model->kamar_rand($id)->result();
 		$this->load->view('header',$data_header);
-		$this->load->view('room-detail');
+		$this->load->view('room-detail',$data);
 		$this->load->view('footer');
 	}
 	function tampil_room(){
@@ -212,8 +216,9 @@ class Home extends CI_Controller {
 
 	function tampil_facilities(){
 		$data_header = $this->getHeader('facilities');
+		$data['list_fasilitas']=$this->Model->fasilitas()->result();
 		$this->load->view('header',$data_header);
-		$this->load->view('facilities');
+		$this->load->view('facilities',$data);
 		$this->load->view('footer');
 	}
 	function tampil_blog_item(){
@@ -224,8 +229,21 @@ class Home extends CI_Controller {
 	}
 	function tampil_gallery(){
 		$data_header = $this->getHeader('galleri');
+		$data['list_album'] = $this->Model->album(0)->result();
+		$data['list_foto'] = $this->Model->foto(0)->result();
 		$this->load->view('header',$data_header);
-		$this->load->view('gallery_full');
+		$this->load->view('gallery_full',$data);
+		$this->load->view('footer');
+	}
+	function tampil_video(){
+		$data_header = $this->getHeader('galleri');
+		$data['list_album'] = $this->Model->album(1)->result();
+		$data['list_video'] = $this->Model->foto(1)->result();
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+		$this->load->view('header',$data_header);
+		$this->load->view('video',$data);
 		$this->load->view('footer');
 	}
 

@@ -1,23 +1,17 @@
-
-    <link href="<?php echo base_url().'assets/' ?>plugins/lightbox/dist/css/lightbox.css" rel="stylesheet">
-    <script src="<?php echo base_url().'assets/' ?>plugins/lightbox/dist/js/lightbox.min.js"></script>
-    <script src="<?php echo base_url().'assets/' ?>plugins/isotope/isotope.pkgd.min.js"></script>
-    <script src="<?php echo base_url().'assets/' ?>plugins/imagesloaded/imagesloaded.pkgd.min.js"></script>
-<!-- section header -->
-    <section class="section__header" id="section__header">
+<section class="section__header" id="section__header">
     	<div class="container">
     		<div class="row">
   	    	<div class="col-sm-12">
   	    		<div class="welcome__content">
-							<h1 class="welcome_content__title">Galeri Foto</h1>
+							<h1 class="welcome_content__title">Our gallery</h1>
 
               <!-- Breadcrumbs -->
               <ol class="breadcrumb">
-                <li><a href="<?php echo base_url('home') ?>">Beranda</a></li>
-                <li class="active">Galeri Foto</li>
+                <li><a href="index.html">Home</a></li>
+                <li class="active">Gallery</li>
               </ol>
 
-	  					<!-- <p class="welcome_content__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> -->
+	  					<p class="welcome_content__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 		  			</div> <!-- .welcome__content -->
     	    </div>
 	    	</div> <!-- / .row -->
@@ -30,13 +24,13 @@
     	<div class="container">
     		<div class="row">
     		  <div class="col-sm-12">
-            <h2 class="subheading">Galeri Foto Pada Resort Kami</h2>
+          <h2 class="subheading">Some shots of our beautiful interior</h2>
     				<div class="divider">
     					<hr class="line1">
     					<hr class="line2">
     					<hr class="line1">
     				</div> <!-- / .divider -->
-    				<p class="section__subtitle">Periksa layanan dan fasilitas Resort kami di galeri foto. Dapatkan akses ke pilihan gambar terbaik Resort kami.</p>
+    				<p class="section__subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis aperiam mollitia enim corporis ex praesentium reprehenderit.</p>
     		  </div>
     		</div> <!-- / .row -->
     		<div class="row">
@@ -45,7 +39,7 @@
             <ul class="nav nav-tabs gallery__nav" role="tablist">
               <li role="presentation" class="gallery-nav__link active">
                 <a href="#" role="tab" data-filter=".all">
-                  <span>Semua</span>
+                  <span>All</span>
                 </a>
               </li>
               <?php foreach ($list_album as $la) { ?>
@@ -59,16 +53,28 @@
     		  </div>
     		</div> <!-- / .row -->
     	</div> <!-- / .container -->
-    	<div class="container-fluid">
+    	<div class="container">
 		    <div id="gallery__items" class="row">
-          <?php foreach ($list_foto as $lf) { ?>
-		    	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 gallery__item all <?php echo $lf->id_album ?>">
-            <a href="<?php echo base_url().'assets/' ?>images/foto/<?php echo $lf->gallery_gambar ?>" data-lightbox="gallery" data-title="<?php echo $lf->gallery_nama ?>">
-              <img src="<?php echo base_url().'assets/' ?>images/foto/<?php echo $lf->gallery_gambar ?>" class="img-responsive" alt="<?php echo $lf->gallery_nama ?>">
-            </a>
+          <?php foreach ($list_video as $lv) { ?>
+		    	<div class="col-xs-12 col-sm-6 col-md-4 gallery__item all <?php echo $lv->id_album ?>">
+            <!-- <a href="https://www.youtube.com/embed/kUlyFOBT_sw" data-lightbox="gallery" data-title="Your caption"> -->
+            <iframe class="col-sm-12" id="iframe" height="253px" src="<?php echo $lv->gallery_gambar ?>" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <!-- </a> -->
           </div> <!-- .gallery__item -->
           <?php } ?>
+          
         </div> <!-- .row -->
 	            
 	    </div> <!-- / .container-fluid -->
     </section> <!-- / .section__gallery-alt -->
+
+    <!-- modal -->
+    <div class="modal fade" id="services__modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe id="iframe" width="560" height="315" src="https://www.youtube.com/embed/kUlyFOBT_sw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>>
+          </div>
+        </div> <!-- .modal-content -->
+      </div> <!-- .modal-dialog -->
+    </div> <!-- .modal -->

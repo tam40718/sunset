@@ -130,7 +130,7 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Galeri <i class="icon ion-chevron-down"></i></a>
               <ul class="dropdown-menu">
                 <li><a href="<?=site_url('home/tampil_gallery');?>">Foto</a></li>
-                <li><a href="<?=site_url('home/tampil_gallery');?>">Video</a></li>
+                <li><a href="<?=site_url('home/tampil_video');?>">Video</a></li>
               </ul>
             </li>
           </ul>
