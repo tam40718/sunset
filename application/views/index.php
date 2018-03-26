@@ -1,6 +1,7 @@
-<head>
+
     <link rel="stylesheet" href="<?php echo base_url().'assets/' ?>plugins/owl-carousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url().'assets/' ?>plugins/owl-carousel/dist/assets/owl.theme.default.min.css">
+    <link href="<?php echo base_url().'assets/' ?>plugins/lightbox/dist/css/lightbox.css" rel="stylesheet">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.waterwheelCarousel.js' ?>"></script>
   <!-- JS Plugins -->
@@ -41,7 +42,6 @@
    width: 450px;
  }
 </style>
-</head>
 
 <!-- CONTENT
 	================================================== -->
@@ -105,54 +105,59 @@
    <div class="col-sm-12"> 
 
     <!-- Reservation form --> 
-    <form class="reservation__form"> 
+    <form class="reservation__form" method="post" action="<?=site_url('home/cek_sedia');?>"> 
      <div class="form-group">
       <div class="form-group__inner"> 
-       <label for="reservation__check-in">Arrival date</label>
-       <input type="text" class="form-control date" id="reservation__check-in" value="24 December 2017"> 
+       <label for="reservation__check-in">Tanggal Datang</label>
+       <input type="text" class="form-control date" name="checkin" id="reservation__check-in" value="<?php if(!empty($this->session->userdata('checkin'))){ echo date('d M Y', strtotime($this->session->userdata('checkin'))); }else{ echo date('d M Y');} ?>"> 
      </div> <!-- / .form-group__inner --> 
    </div> <!-- / .form-group --> 
    <div class="form-group"> 
     <div class="form-group__inner"> 
-     <label for="reservation__check-out">Departure date</label>
-     <input type="text" class="form-control date" id="reservation__check-out" value="12 January 2018">
+     <label for="reservation__check-out">Tanggal Pergi</label>
+     <input type="text" class="form-control date" name="checkout" id="reservation__check-out" value="<?php if(!empty($this->session->userdata('checkout'))){ echo date('d M Y', strtotime($this->session->userdata('checkout'))); }else{ echo date('d M Y', strtotime('+1 day'));} ?>">
    </div> <!-- / .form-group__inner --> 
  </div> <!-- / .form-group --> 
  <div class="form-group"> 
   <div class="form-group__inner"> 
-   <label for="reservation__adults">Adults</label>
-   <input type="text" id="reservation__adults">
+   <label for="reservation__adults">Dewasa</label>
+   <input type="text" id="reservation__adults" value="<?php if(!empty($this->session->userdata('dewasa'))){ echo $this->session->userdata('dewasa'); }else{ echo "2";} ?>" name="dewasa">
    <div class="dropdown reservation-dropdown">
     <button class="dropdown-toggle" type="button" id="adults-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-     <span>1 Adult</span>
+     <span><?php if(!empty($this->session->userdata('dewasa'))){ echo $this->session->userdata('dewasa'); }else{ echo "2";} ?></span>
      <i class="icon ion-chevron-down"></i>
    </button>
    <ul class="dropdown-menu" aria-labelledby="adults-dropdown">
-     <li><a href="#">1 Adult</a></li>
-     <li><a href="#">2 Adults</a></li>
-     <li><a href="#">3 Adults</a></li>
+     <li><a href="#">1 </a></li>
+     <li><a href="#">2 </a></li>
+     <li><a href="#">3 </a></li>
    </ul>
  </div> <!-- . -->
 </div> <!-- / .form-group__inner --> 
 </div> <!-- / .form-group --> 
 <div class="form-group"> 
   <div class="form-group__inner">
-   <label for="reservation__children">Children</label>
-   <input type="text" id="reservation__children">
+   <label for="reservation__children">Anak</label>
+   <input type="text" id="reservation__children" value="<?php if(!empty($this->session->userdata('anak'))){ echo $this->session->userdata('anak'); }else{ echo "0";} ?>" name="anak">
    <div class="dropdown reservation-dropdown">
     <button class="dropdown-toggle" type="button" id="children-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-     <span>1 Child</span>
+     <span><?php if(!empty($this->session->userdata('anak'))){ echo $this->session->userdata('anak'); }else{ echo "0";} ?></span>
      <i class="icon ion-chevron-down"></i>
    </button>
    <ul class="dropdown-menu" aria-labelledby="children-dropdown">
-     <li><a href="#">1 Child</a></li>
-     <li><a href="#">2 Children</a></li>
-     <li><a href="#">3 Children</a></li>
+     <li><a href="#">0 </a></li>
+     <li><a href="#">1 </a></li>
+     <li><a href="#">2 </a></li>
    </ul>
  </div> <!-- . -->
 </div> <!-- / .form-group__inner --> 
 </div> <!-- / .form-group -->  
-</form> <!-- / .reservation__form --> 
+
+<div class="form-group"> 
+  <div class="form-group__inner">
+   <label for="reservation__children">Kode Promosi</label>
+   <input type="text" id="kode" name="kode" class="form-control" placeholder="Masukkan Kode" value="<?php if(!empty($this->session->userdata('id_promo'))){ echo $this->session->userdata('id_promo');} ?>">
+</div> <!-- / .form-group__inner --> 
 
 </div> 
 </div> <!-- / .row -->
@@ -161,10 +166,10 @@
 
   <!-- Reservation button --> 
   <div class="reservation__button">
-   <!-- <button type="submit" class="btn btn-reservation"> -->
-    <a href="<?=site_url('home/tampil_room');?>" class="btn btn-reservation">Check availability</a></button>
+   <button type="submit" class="btn btn-reservation">cek Ketersediaan <?php $this->session->sess_destroy(); ?></button>
   </div> <!-- / .reservation__button -->  
 
+</form> <!-- / .reservation__form --> 
 </div> 
 </div> <!-- / .row -->  
 </div> <!-- / .container --> 
@@ -175,7 +180,7 @@
  <div class="container">
   <div class="row">
    <div class="col-sm-12"> 		  	
-    <h2 class="section__title">Welcome to <strong>Sunset Hotel</strong></h2>
+    <h2 class="section__title">Selamat Datang di <strong>Sunset Resort</strong></h2>
     <div class="divider">
      <hr class="line1">
      <hr class="line2">
@@ -189,16 +194,16 @@
    <div class="section_about__content">
     <div class="col-md-6">
      <div class="about__pic">
-      <img src="<?php echo base_url().'assets/' ?>images/about_img.jpg" class="img-responsive" alt="...">
+        <img src="<?php echo base_url().'assets/' ?>images/about/<?php echo $tentang->about_logo;?>" class="img-responsive" alt="<?php echo $tentang->about_judul;?>">
     </div> <!-- / .about__pic -->
   </div>
   <div class="col-md-6">
    <div class="about__desc">
-    <p class="about_desc__subtitle">About us</p>
-    <h3 class="about_desc__title">Probably the best place to enjoy your life</h3>
-    <p class="about_desc__desc">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot, which was created for the bliss of souls like mine. I am so happy, my dear friend, so absorbed in the exquisite sense of mere tranquil existence. When, while the lovely valley teems with vapour around me, and the meridian sun strikes the upper surface of the impenetrable foliage of my trees, and but a few stray gleams steal into the inner sanctuary.</p>
-    <h4 class="about_desc__quote">The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary.</h4>
-    <a href="about.html" class="btn btn-default">Learn More</a>
+    <p class="about_desc__subtitle">Tentang Kami</p>
+      <h3 class="about_desc__title"><?php echo $tentang->about_judul;?></h3>
+      <p class="about_desc__desc"><?php echo substr($tentang->about_deskripsi, 0, 100);?></p>
+      <h4 class="about_desc__quote"><?php echo substr($tentang->about_deskripsi2, 0, 100);?></h4>
+    <a href="about.html" class="btn btn-default">Lebih Lanjut</a>
   </div> <!-- / .about__desc -->
 </div>
 </div> <!-- / .section_about__content -->
@@ -211,78 +216,41 @@
  <div class="container">
   <div class="row">
    <div class="col-sm-12"> 		  	
-    <h2 class="section__title">Our <strong>Best rooms</strong></h2>
+    <h2 class="section__title"><strong>Kamar Terbaik</strong> Kami</h2>
     <div class="divider">
      <hr class="line1">
      <hr class="line2">
      <hr class="line1">
    </div> <!-- / .divider -->
-   <p class="section__subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
+   <p class="section__subtitle">Berikut kamar terbaik kami, silahkan untuk mengecek dan memesannya.</p>
  </div>
 </div> <!-- / .row -->
 </div> <!-- / .container -->
 <div class="container">
   <div class="best-rooms__content">
    <div class="row">
+    <?php foreach ($list_kamar as $lk) { ?>
     <div class="col-sm-6">
      <figure class="best-rooms__item">
-      <img src="<?php echo base_url().'assets/' ?>images/single_room.jpg" class="img-responsive" alt="...">
+      <img src="<?php echo base_url().'assets/' ?>images/kamar/<?php echo $lk->nama_gambar_kamar ?>" class="img-responsive" alt="<?php echo $lk->nama_kamar ?>">
       <figcaption>
-       <h3>Single room</h3>
+       <h3><?php echo $lk->nama_kamar ?></h3>
        <div class="item__price">
-        $50 <small>/ night</small>
+        <?php echo 'RP.'.$lk->hight_kamar ?> <small>/ Malam</small>
       </div>
-      <p class="item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
-      <a href="reservation.html" class="btn-book">Book now <i class="icon ion-chevron-right"></i><i class="icon ion-chevron-right"></i></a>
+      <p class="item__desc"><?php echo substr($lk->deskripsi_kamar, 0,100) ?></p>
+      <a href="<?=site_url('home/tampil_room_detail/'.$lk->id_kamar);?>" class="btn-book">Detail <i class="icon ion-chevron-right"></i><i class="icon ion-chevron-right"></i></a>
+      <a href="<?php echo base_url('reservasi') ?>" class="btn-book">Pesan <i class="icon ion-chevron-right"></i><i class="icon ion-chevron-right"></i></a>
     </figcaption>
   </figure> <!-- / .best-rooms__item -->
 </div>
-<div class="col-sm-6">
- <figure class="best-rooms__item">
-  <img src="<?php echo base_url().'assets/' ?>images/double_room.jpg" class="img-responsive" alt="...">
-  <figcaption>
-   <h3>Double room</h3>
-   <div class="item__price">
-    $135 <small>/ night</small>
-  </div>
-  <p class="item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
-  <a href="reservation.html" class="btn-book">Book now <i class="icon ion-chevron-right"></i><i class="icon ion-chevron-right"></i></a>
-</figcaption>
-</figure> <!-- / .best-rooms__item -->
-</div>
-</div> <!-- / .row -->
-<div class="row">
-  <div class="col-sm-6">
-   <figure class="best-rooms__item">
-    <img src="<?php echo base_url().'assets/' ?>images/deluxe_room.jpg" class="img-responsive" alt="...">
-    <figcaption>
-     <h3>Deluxe room</h3>
-     <div class="item__price">
-      $240 <small>/ night</small>
-    </div>
-    <p class="item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis.</p>
-    <a href="reservation.html" class="btn-book">Book now <i class="icon ion-chevron-right"></i><i class="icon ion-chevron-right"></i></a>
-  </figcaption>
-</figure> <!-- / .best-rooms__item -->
-</div>
-<div class="col-sm-6">
- <figure class="best-rooms__item">
-  <img src="<?php echo base_url().'assets/' ?>images/royal_room.jpg" class="img-responsive" alt="...">
-  <figcaption>
-   <h3>Royal room</h3>
-   <div class="item__price">
-    $320 <small>/ night</small>
-  </div>
-  <p class="item__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam illum modi explicabo obcaecati odit, omnis quis alias.</p>
-  <a href="reservation.html" class="btn-book">Book now <i class="icon ion-chevron-right"></i><i class="icon ion-chevron-right"></i></a>
-</figcaption>
-</figure> <!-- / .best-rooms__item -->
-</div>
+<?php } ?>
+
 </div> <!-- / .row -->
 <div class="row">
   <div class="col-xs-12">
    <div class="rooms__button">
-    <a href="rooms-1.html" class="btn">See all rooms</a>
+    <a href="<?php echo base_url('home/tampil_room') ?>" class="btn">Lihat Semua Kamar</a>
   </div> <!-- / .rooms__button -->
 </div>
 </div> <!-- / .row -->
@@ -292,51 +260,42 @@
 
 <!-- section services -->
 <section class="section__services">
+ <div class="container">
+  <div class="row">
+   <div class="col-sm-12">        
+    <h2 class="section__title"><strong>Fasilitas </strong><span style="color: white"> Kami</span></h2>
+    <div class="divider">
+     <hr class="line1">
+     <hr class="line2">
+     <hr class="line1">
+   </div> <!-- / .divider -->
+   <p class="section__subtitle">Berikut fasilitas dari Resort kami.</p>
+ </div>
+</div> <!-- / .row -->
+</div> <!-- / .container -->
  <div class="container-fluid">
   <div class="row">
-   <div class="col-md-3 col-sm-6">
-    <div class="services__item">
-     <h2 class="services_item__title">Parking</h2>
-     <div class="services_item__divider">
-      <i class="icon ion-android-star"></i>
-      <i class="icon ion-android-star"></i>
-      <i class="icon ion-android-star"></i>
-    </div> <!-- .services_item__divider -->
-    <p class="services_item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel temporibus adipisci mollitia ducimus facilis nesciunt at minima magni optio, dignissimos, neque dolore iste labore dolor enim, ipsam quisquam, quae nihil!</p>
-  </div> <!-- .services__item -->
-</div>
-<div class="col-md-3 col-sm-6">
-  <div class="services__item">
-   <h2 class="services_item__title">Fitness hall</h2>
-   <div class="services_item__divider">
-    <i class="icon ion-android-star"></i>
-    <i class="icon ion-android-star"></i>
-    <i class="icon ion-android-star"></i>
-  </div> <!-- .services_item__divider -->
-  <p class="services_item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi eaque, eum. Voluptates corporis tenetur commodi nihil velit perspiciatis natus fugit rerum nisi, at, voluptas autem quisquam reprehenderit odit dolores quas!</p>
-</div> <!-- .services__item -->
-</div>
-<div class="col-md-3 col-sm-6">
-  <div class="services__item">
-   <h2 class="services_item__title">Restaurant</h2>
-   <div class="services_item__divider">
-    <i class="icon ion-android-star"></i>
-    <i class="icon ion-android-star"></i>
-    <i class="icon ion-android-star"></i>
-  </div> <!-- .services_item__divider -->
-  <p class="services_item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non nesciunt ullam porro ipsa, architecto, doloribus illo veritatis consequatur temporibus eveniet labore, vitae laudantium possimus placeat libero magnam.</p>
-</div> <!-- .services__item -->
-</div>
-<div class="col-md-3 col-sm-6">
-  <div class="services__item">
-   <h2 class="services_item__title">Spa center</h2>
-   <div class="services_item__divider">
-    <i class="icon ion-android-star"></i>
-    <i class="icon ion-android-star"></i>
-    <i class="icon ion-android-star"></i>
-  </div> <!-- .services_item__divider -->
-  <p class="services_item__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed animi voluptates, laudantium aspernatur, libero nulla ut. Quibusdam distinctio eaque cum officia expedita dolore, perspiciatis quisquam vel et neque tempora cupiditate.</p>
-</div> <!-- .services__item -->
+   <?php foreach ($list_fasilitas as $lf) { ?>
+          <div class="col-md-3 col-sm-4">
+            <div class="rooms__item">
+              <div class="rooms__pic">
+                <img src="<?php echo base_url().'assets/' ?>images/fasilitas/<?php echo $lf->gambar_fasilitas ?>" class="img-responsive" alt="<?php echo $lf->nama_fasilitas ?>">
+              </div> <!-- / .about__pic -->
+              <div class="rooms__desc">
+                <div class="rooms_desc__header">
+                  <h2 class="rooms_desc__title" style="color: white"><?php echo $lf->nama_fasilitas ?></h2>
+                </div> <!-- .rooms_desc__header -->
+                <p class="rooms_desc__desc"><?php echo substr($lf->deskripsi_fasilitas, 0,200) ?></p>
+                
+              </div> <!-- / .rooms__desc -->
+            </div> <!-- .rooms__item -->
+          </div>
+          <?php } ?>
+  <div class="col-xs-12">
+   <div class="rooms__button">
+    <br>
+    <a href="<?php echo base_url('home/tampil_facilities') ?>" class="btn" style="color: white">Lihat Semua Fasilitas</a>
+  </div> <!-- / .rooms__button -->
 </div>
 </div> <!-- / .row -->
 </div> <!-- / .container -->
@@ -347,18 +306,18 @@
  <div class="container">
   <div class="row">
    <div class="col-sm-12"> 		  	
-    <h2 class="section__title">Our <strong>Gallery</strong></h2>
+    <h2 class="section__title"><strong>Galeri</strong> Kami</h2>
     <div class="divider">
      <hr class="line1">
      <hr class="line2">
      <hr class="line1">
    </div> <!-- / .divider -->
-   <p class="section__subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis aperiam mollitia enim corporis ex praesentium reprehenderit.</p>
+   <p class="section__subtitle">Berikut galeri dari Resort kami.</p>
  </div>
 </div> <!-- / .row -->
 </div> <!-- / .container -->
 <div class="container-fluid">
-  <div class="row">
+  <!-- <div class="row">
    <div class="col-sm-12">
     <div id="carousel">
      <img src="<?php echo base_url().'assets/images/gallery_img1.jpg' ?>" id="item-1" />
@@ -368,7 +327,20 @@
      <img src="<?php echo base_url().'assets/images/gallery_img5.jpg' ?>" id="item-5" />
    </div>
  </div>
-</div>
+</div> -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div id="gallery__carousel" class="owl-carousel owl-theme gallery__body">
+              <?php foreach ($list_foto as $lf) { ?>
+              <div class="gallery__item">
+                <a href="<?php echo base_url().'assets/' ?>images/foto/<?php echo $lf->gallery_gambar ?>" data-lightbox="gallery" data-title="<?php echo $lf->gallery_nama ?>">
+                  <img src="<?php echo base_url().'assets/' ?>images/foto/<?php echo $lf->gallery_gambar ?>" class="img-responsive" alt="<?php echo $lf->gallery_nama ?>">
+                </a>
+              </div> <!-- .gallery__item -->
+              <?php } ?>
+            </div> <!-- .gallery__body -->
+          </div>
+        </div> <!-- / .row -->
 </div> <!-- / .container -->
 </section> <!-- / .section__gallery -->
 
@@ -379,7 +351,7 @@
  <div class="container">
   <div class="row">
    <div class="col-sm-12"> 		  	
-    <h2 class="section__title">Tour <strong>Packages</strong></h2>
+    <h2 class="section__title">Paket <strong>Wisata</strong></h2>
     <div class="divider">
      <hr class="line1">
      <hr class="line2">
@@ -392,7 +364,7 @@
   <div class="row">
    <div class="col-xs-12 hidden-xs col-sm-6 col-md-6 col-lg-3 col-lg-push-9">
     <div class="news__title">
-     <div>Package</div>
+     <div>Paket Wisata</div>
    </div>
  </div>
  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 col-lg-pull-3">
@@ -500,7 +472,7 @@
  <div class="container">
   <div class="row">
    <div class="col-sm-12"> 		  	
-    <h2 class="section__title"><strong>Contact</strong> us</h2>
+    <h2 class="section__title"><strong>Kontak</strong> Kami</h2>
     <div class="divider">
      <hr class="line1">
      <hr class="line2">
@@ -516,83 +488,33 @@
   <div class="row">
    <div class="col-sm-5">
     <div class="contacts__info">
-     <p class="contacts_info__title">Information</p>
+     <p class="contacts_info__title"><?php echo $kontak->kontak_judul;?></p>
      <ul class="contacts_info__content">
       <li>
        <i class="icon ion-android-pin"></i>
        <div class="contact-info-content">
-        <div class="title">Address</div>
-        <div class="description">10987 1st Avenue, Lorem City, CA</div>
+        <div class="title">Alamat</div>
+        <div class="description"><?php echo $kontak->kontak_alamat;?></div>
       </div>
     </li>
     <li>
      <i class="icon ion-android-call"></i>
      <div class="contact-info-content">
-      <div class="title">Phone / Fax</div>
-      <div class="description">+45 789 123 4544 / +45 789 123 4848</div>
+      <div class="title">Telepon</div>
+      <div class="description"><?php echo $kontak->kontak_telepon;?></div>
     </div>
   </li>
   <li>
    <i class="icon ion-android-mail"></i>
    <div class="contact-info-content">
     <div class="title">E-mail</div>
-    <div class="description">admin@sunsethotel.com</div>
+    <div class="description"><?php echo $kontak->kontak_email;?></div>
   </div>
 </li>
 </ul> <!-- .contacts_info__content -->
 </div> <!-- / .contacts__info -->
-<p class="subheading">If you have any questions don't hesistate to contact us.</p>
 </div>
-<div class="col-sm-7">
-  <div class="section-contacts__form_body">
 
-   <p class="section-contacts__title">Get in touch</p>
-
-   <!-- Please carefully read the README file in order to setup the PHP contact form properly -->
-
-   <!-- Alert message -->
-   <div class="alert" id="form_message" role="alert"></div>
-
-   <!-- Form -->
-   <form id="form_sendemail" class="contacts__form">
-
-    <!-- Email -->
-    <div class="form-group">
-     <label for="email" class="sr-only">Email address</label>
-     <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email address">
-     <span class="help-block"></span>
-   </div>
-
-   <!-- Name -->
-   <div class="form-group">
-     <label for="name" class="sr-only">Name</label>
-     <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name">
-     <span class="help-block"></span>
-   </div>
-
-   <!-- Message -->
-   <div class="form-group">
-     <label for="message" class="sr-only">Message</label>
-     <textarea name="message" class="form-control" id="message" rows="6" placeholder="Enter your message"></textarea>
-     <span class="help-block"></span>
-   </div>
-
-   <!-- Note -->
-   <div class="form-group">
-     <small class="text-muted">
-      * All fields are mandatory.
-    </small>
-  </div>
-
-  <!-- Submit -->
-  <button type="submit" class="btn btn-default">
-   Send Message
- </button>
-
-</form> <!-- .contacts__form -->
-
-</div> <!-- / .secction-contacts__form_body -->
-</div>
 </div> <!-- / .row -->
 </div> <!-- / .container -->
 </section> <!-- / .section__contacts -->
@@ -600,7 +522,7 @@
  (function() {
   window.onload = function() {
    var map;
-   var myLatLng = {lat: 12.032233, lng:  -118.256015};
+   var myLatLng = {lat: <?php echo $kontak->kontak_lat;?>, lng:  <?php echo $kontak->kontak_long;?>};
 
    var styleArray = [
    {

@@ -26,6 +26,11 @@ class Home extends CI_Controller {
 		
 		$data['tampil_slider'] = $this->Model->tampil_slider(3)->result_array();
 		$data['home'] 	   = $this->Model->tampil()->result_array();
+		$data['tentang'] = $this->Model->tentang()->row();
+		$data['list_kamar']=$this->Model->kamar(4)->result();
+		$data['kontak'] = $this->Model->hubungi()->row();
+		$data['list_fasilitas']=$this->Model->fasilitas(4)->result();
+		$data['list_foto'] = $this->Model->foto_index(12)->result();
 		
 		$data['galeri_album'] = $this->Model->album_galeri(5)->result_array();
 		$this->load->view('index', $data);
@@ -37,6 +42,7 @@ class Home extends CI_Controller {
 	public function tentang(){
 		$tentang_meta = $this->Model->tentang()->row();
 	    // $data_header['title'] = $tentang_meta->about_title_meta;
+		$data_header['kontak'] = $this->Model->hubungi()->row();
 		$data_header['title'] = "Tentang Cakra Tour Pro";
 		$data_header['description'] = $tentang_meta->about_deskripsi_meta;
 		$data_header['keyword'] = $tentang_meta->about_keyword_meta;
@@ -44,6 +50,7 @@ class Home extends CI_Controller {
 		$this->load->view('header',$data_header);
 		//$data['tampil_slider'] = $this->Model->tampil_slider(4)->result_array();
 		$data['tentang'] = $this->Model->tentang()->row();
+		$data['list_fasilitas']=$this->Model->fasilitas(2)->result();
 		//$data_header['menu'] = $this->Model->menu_header()->result_array();
 		$this->load->view('about', $data);
 		//$data_footer['terbaru'] = $this->Model->terbaru(5)->result_array();
@@ -130,6 +137,7 @@ class Home extends CI_Controller {
 	
 	function hubungi(){
 		$hubungi_meta = $this->Model->hubungi()->row();
+		$data_header['kontak'] = $this->Model->hubungi()->row();
 		$data_header['title'] = $hubungi_meta->kontak_title_meta;
 		$data_header['description'] = $hubungi_meta->kontak_deskripsi_meta;
 		$data_header['keyword'] = $hubungi_meta->kontak_keyword_meta;
@@ -155,7 +163,7 @@ class Home extends CI_Controller {
 		redirect(base_url('Home/hubungi'));
 	}
 
-	public function pesan() {
+	public function pesank() {
 		$data = array(
 				'nama_form'        => $this->input->post('name'),
 				'pesan_form'        => $this->input->post('message'),
@@ -207,8 +215,7 @@ class Home extends CI_Controller {
 	}
 	function tampil_room(){
 		$data_header = $this->getHeader('Kamar');
-		$data['list_kamar']=$this->Model->kamar()->result();
-		$data['list_fasilitas']=$this->Model->fasilitas()->result();
+		$data['list_kamar']=$this->Model->kamar(0)->result();
 		$this->load->view('header',$data_header);
 		$this->load->view('room-1',$data);
 		$this->load->view('footer');
@@ -216,7 +223,7 @@ class Home extends CI_Controller {
 
 	function tampil_facilities(){
 		$data_header = $this->getHeader('facilities');
-		$data['list_fasilitas']=$this->Model->fasilitas()->result();
+		$data['list_fasilitas']=$this->Model->fasilitas(0)->result();
 		$this->load->view('header',$data_header);
 		$this->load->view('facilities',$data);
 		$this->load->view('footer');
@@ -252,12 +259,79 @@ class Home extends CI_Controller {
 		$data_header['description'] = $aktif.' Resort';
 		$data_header['keyword'] = $aktif.' Resort';
 		$data_header['aktif'] = $aktif;
+		$data_header['kontak'] = $this->Model->hubungi()->row();
 
 		return $data_header;
 	}
 	public function list_fasilitas($id,$order)
 	{
 		echo json_encode($this->Model->getid_fasilitas($id,$order)->result());
+	}
+	//----------------------Reservasi
+	public function cek_sedia()
+	{
+		if (!empty($this->session->userdata('id_kpesan'))) {
+			$id_kpesan = $this->session->userdata('id_kpesan');
+		}else{
+			$id_kpesan = $this->id_otok();
+			$data_kpesan['id_kpesan'] = $id_kpesan;
+			$data_kpesan['tgl_kpesan'] = date('Y-m-d');
+			$this->Model->add('tk_pesan',$data_kpesan);
+			$this->session->set_userdata('id_kpesan',$id_kpesan);
+			$this->session->set_userdata('tgl_kpesan',date('Y-m-d'));
+		}
+
+		$data_sess['checkin'] = $this->input->post('checkin');
+		$data_sess['checkout'] = $this->input->post('checkout');
+		$data_sess['dewasa'] = $this->input->post('dewasa');
+		$data_sess['anak'] = $this->input->post('anak');
+		$data_sess['id_promo'] = $this->input->post('kode');
+		$this->session->set_userdata($data_sess);
+		$this->tampil_room();
+	}
+
+	public function pesan($id_kamar)
+	{
+		$data_det_pesan['id_kamar'] = $id_kamar;
+		$data_det_pesan['id_kpesan'] = $this->session->userdata('id_kpesan');
+		$data_det_pesan['checkin_kdet_pesan'] = $this->session->userdata('checkin');
+		$data_det_pesan['checkout_kdet_pesan'] = $this->session->userdata('checkout');
+		$data_det_pesan['dewasa_kdet_pesan'] = $this->session->userdata('dewasa');
+		$data_det_pesan['anak_kdet_pesan'] = $this->session->userdata('anak');
+		echo date('Y-m-d',strtotime($this->session->userdata('checkin')));
+		echo "<br>";
+		if($this->isWeekend(date('Y-m-d',strtotime($this->session->userdata('checkin'))))){
+			echo "ya";
+		}else{
+			echo "tidak";
+		}
+	}
+	function isWeekend($date) {
+    	$weekDay = date('N', strtotime($date));
+    	if ($weekDay == 0 || $weekDay == 6){
+    		return TRUE;
+    	}else{
+    		return False;
+    	}
+    	// echo $weekDay;
+	}
+	public function id_otok()
+	{
+		$fix=0;
+		$kode = 'IKP';
+		$data = $this->Model->get_id_kp()->result();
+		foreach ($data as $d) {
+			$fix = $d->id_kpesan;
+		}
+		if (substr($fix, 4, 6)==date('ymd')) {
+			$angka = substr($fix, 11)+1;
+			$angka_p = str_pad($angka,3,"0",STR_PAD_LEFT);
+			$tgl_angk = substr($fix, 4, 7).$angka_p;
+		}else{
+			$tgl_angk = date('ymd').'_001';
+		}
+		return $kode_jadi= $kode.'_'.$tgl_angk;
+	
 	}
 
 }

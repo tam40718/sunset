@@ -1,18 +1,18 @@
-<!-- section header -->
+section header -->
 <section class="section__header">
 	<div class="container">
 		<div class="row">
 			<div class="col-sm-12">
 				<div class="welcome__content">
-					<h1 class="welcome_content__title">Reservation</h1>
+					<h1 class="welcome_content__title">Reservasi</h1>
 
 					<!-- Breadcrumbs -->
 					<ol class="breadcrumb">
-						<li><a href="index.html">Home</a></li>
-						<li class="active">Reservation</li>
+						<li><a href="<?php echo base_url('home') ?>">Beranda</a></li>
+						<li class="active">Reservasi</li>
 					</ol>
 
-					<p class="welcome_content__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+					<!-- <p class="welcome_content__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> -->
 				</div> <!-- .welcome__content -->
 			</div>
 		</div> <!-- / .row -->
@@ -26,73 +26,71 @@
 		<div class="row">
 			<div class="col-sm-5 col-sm-push-7 col-md-4 col-md-push-8">
 				<div class="booking__details-body">
-					<p class="subheading">Booking details</p>
-					<h2 class="section__heading">Selected room</h2>
+					<p class="subheading">Detail Pesanan</p>
+					<h2 class="section__heading">Kamar yang dipilih</h2> 
+					<!-- <ul class="details-info">               
+						<li> -->
+							<label>Check in : </label>
+							<p><?php echo date('l, Y-m-d'); ?></p>
+						<!-- </li>
+						<li> -->
+							<label>Check out</label>
+							<p><?php echo date('l, Y-m-d', strtotime('+1 day')); ?></p>
+						<!-- </li>
+					</ul> -->
+					<hr>
 					<figure class="room__details">
-						<img src="<?php echo base_url().'assets/' ?>images/gallery_img1.jpg" class="img-responsive" alt="...">
 						<figcaption>
 							<h3>Double room</h3>
 							<div class="room__price">
-								$50 <small>/ night</small>
+								<a href="#"><i class="icon ion-trash-a"></i></a>
 							</div>
 							<p class="room__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis mollitia voluptas vero vel eligendi sint.</p>
 						</figcaption>
 					</figure> <!-- / .room__details -->
-					<ul class="details-info">                
-						<li>
-							<label>Check in</label>
-							<p>
-								<input type="date" name="check-in" id="check-in" class="form-control">
-							</p>
-						</li>
-						<li>
-							<label>Check out</label>
-							<p>
-								<input type="date" name="check-out" id="check-out" class="form-control">
-							</p>
-						</li>
+					<ul class="details-info">    
 						<li>
 							<label>Adult</label>
 							<select name="form-adults" id="form-adults" class="form-control">
-								<option value="1" selected="">Adult</option>
-								<option value="2">1 Adult</option>
-								<option value="3">2 Adult</option>
-								<option value="4">3 Adult</option>
+								<option value="1">1 Adult</option>
+								<option value="2" selected="">2 Adults</option>
+								<option value="3">3 Adults</option>
+								<option value="4">4 Adults</option>
 							</select>
 							<span class="help-block"></span>
 						</li>
 						<li>
 							<label>Children</label>
 							<select name="form-children" id="form-children" class="form-control">
-								<option value="1" selected="">Children</option>
-								<option value="2">1 Child</option>
-								<option value="3">2 Children</option>
-								<option value="4">3 Children</option>
+								<option value="0" selected="">0 Child</option>
+								<option value="1">1 Child</option>
+								<option value="2">2 Children</option>
 							</select>
 							<span class="help-block"></span>
 						</li>
-						<li>
-							<label>Nights</label>
-							<p>
-								1 Night
-							</p>
+						<li class="total-price">
+							<label>Total price</label>
+							<p>$ 515</p>
 						</li>
-						<li>
-							<label>Services</label>
-							<p>
-								<select name="service-type" class="form-control">
-									<option value="accommodation">Accommodation | $0</option>
-									<option value="breakfast">Breakfast&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | $5</option>
-								</tr>
-							</table>
-						</select>
-					</p>
-				</li>
-				<li class="total-price">
-					<label>Total price</label>
-					<p>$ 515</p>
-				</li>
-			</ul>
+					</ul>
+					<hr>
+					<table>
+						<tr>
+							<td><label>Biaya Kamar</label></td>
+							<td><label>&nbsp:&nbsp</label></td>
+							<td>Rp.1000000</td>
+						</tr>
+						<tr>
+							<td><label>Pajak</label></td>
+							<td><label>&nbsp:&nbsp</label></td>
+							<td>Rp.100000</td>
+						</tr>
+						<tr>
+							<td><label>Total Keseluruhan</label></td>
+							<td><label>&nbsp:&nbsp</label></td>
+							<td>Rp.1100000</td>
+						</tr>
+					</table>
 		</div> <!-- .booking__details-body -->
 	</div>
 	<div class="col-sm-7 col-sm-pull-5 col-md-8 col-md-pull-4">
@@ -281,4 +279,4 @@
 			</div>
 		</div> <!-- / .row -->
 	</div> <!-- / .container -->
-    </section> <!-- / .section reservation -->
+    </section> <!-- / .section reservation

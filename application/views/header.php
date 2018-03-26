@@ -52,10 +52,9 @@
 
     <!-- PRELOADER
     ================================================== -->
-  <!--   <div id="loader-wrapper">
+    <!-- <div id="loader-wrapper">
       <div id="loader"></div>
-    </div> -->
-    
+    </div>  -->
     <!-- Info Section
     ================================================== -->
     <div class="section__info">
@@ -64,20 +63,20 @@
           <div class="info__column-left">
             <div class="section_info__contact hidden-xs">
               <p>
-                <!-- <i class="icon ion-android-pin"></i> 29 Land St, Lorem City, CA -->
+                <i class="icon ion-android-mail"></i> <?php echo $kontak->kontak_email;?>
               </p>  
             </div> <!-- .section_info__contact -->
             <div class="section_info__contact hidden-xs">
               <p>
-                <!-- <i class="icon ion-android-call"></i> +96 885 1247 -->
+                <i class="icon ion-android-call"></i> <?php echo $kontak->kontak_telepon;?>
               </p>  
             </div> <!-- .section_info__contact -->
           </div> <!-- .info__column-left -->
           <div class="info__column-right">
             <ul class="social__icons">
-              <li class="social-icons__item"><a href="#"><i class="icon ion-social-twitter" aria-hidden="true"></i></a></li>
+              <!-- <li class="social-icons__item"><a href="#"><i class="icon ion-social-twitter" aria-hidden="true"></i></a></li>
               <li class="social-icons__item"><a href="#"><i class="icon ion-social-facebook" aria-hidden="true"></i></a></li>
-              <li class="social-icons__item"><a href="#"><i class="icon ion-social-googleplus" aria-hidden="true"></i></a></li>
+              <li class="social-icons__item"><a href="#"><i class="icon ion-social-googleplus" aria-hidden="true"></i></a></li> -->
             </ul> <!-- .social__icons -->
             
             

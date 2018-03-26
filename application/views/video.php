@@ -24,13 +24,13 @@
     	<div class="container">
     		<div class="row">
     		  <div class="col-sm-12">
-          <h2 class="subheading">Some shots of our beautiful interior</h2>
+          <h2 class="subheading">Galeri Video Pada Resort Kami</h2>
     				<div class="divider">
     					<hr class="line1">
     					<hr class="line2">
     					<hr class="line1">
     				</div> <!-- / .divider -->
-    				<p class="section__subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti sit dicta quae natus quasi ratione quis id, tenetur atque blanditiis aperiam mollitia enim corporis ex praesentium reprehenderit.</p>
+    				<p class="section__subtitle">Periksa layanan dan fasilitas Resort kami di galeri video. Dapatkan akses ke pilihan gambar terbaik Resort kami.</p>
     		  </div>
     		</div> <!-- / .row -->
     		<div class="row">
@@ -39,7 +39,7 @@
             <ul class="nav nav-tabs gallery__nav" role="tablist">
               <li role="presentation" class="gallery-nav__link active">
                 <a href="#" role="tab" data-filter=".all">
-                  <span>All</span>
+                  <span>Semua</span>
                 </a>
               </li>
               <?php foreach ($list_album as $la) { ?>

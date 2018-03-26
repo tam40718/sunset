@@ -59,45 +59,13 @@
 			    	  <div class="about__desc">
 			  				<h3 class="about_desc__title"><?php echo $tentang->about_judul;?></h3>
 								<p class="about_desc__desc"><?php echo $tentang->about_deskripsi;?></p>
-								<h4 class="about_desc__quote"><?php echo $tentang->about_deskripsi2;?></h4>
+						<h4 class="about_desc__quote"><?php echo $tentang->about_deskripsi2;?></h4>
 			  			</div> <!-- / .about__desc -->
 		    	  </div>
 		    	</div> <!-- / .section_about__content -->
 		    </div> <!-- / .row -->
     	</div> <!-- / .container -->
     </section> <!-- / .section__about -->
-
-		<!-- section data -->
-    <section class="section__data">
-    	<div class="container">
-		    <div class="row">
-					<div class="col-xs-12 col-sm-3">
-						<div class="section-data__item">
-							<p class="section-data__nbr" data-from="0" data-to="1024" data-speed="2000" data-refresh-interval="10">0</p>
-							<h3 class="section-data__title">Guests stay</h3>
-						</div> <!-- .section-data__item -->
-					</div>
-					<div class="col-xs-12 col-sm-3">
-						<div class="section-data__item">
-							<p class="section-data__nbr" data-from="0" data-to="245" data-speed="1000" data-refresh-interval="5">0</p>
-							<h3 class="section-data__title">Rooms</h3>
-						</div> <!-- .section-data__item -->
-					</div>
-					<div class="col-xs-12 col-sm-3">
-						<div class="section-data__item">
-							<p class="section-data__nbr" data-from="0" data-to="37" data-speed="1000" data-refresh-interval="2">0</p>
-							<h3 class="section-data__title">Awards</h3>
-						</div> <!-- .section-data__item -->
-					</div>
-					<div class="col-xs-12 col-sm-3">
-						<div class="section-data__item">
-							<p class="section-data__nbr" data-from="0" data-to="3700" data-speed="2000" data-refresh-interval="10">0</p>
-							<h3 class="section-data__title">Meal served</h3>
-						</div> <!-- .section-data__item -->
-					</div>
-		    </div> <!-- / .row -->
-	    </div> <!-- / .container -->
-    </section> <!-- / .section__data -->
 <!-- Modal
     ================================================== -->
 	  <div class="modal fade" id="services__modal" tabindex="-1" role="dialog">
@@ -112,10 +80,22 @@
     <!-- section services alt -->
     <section class="section__services-alt">
     	<div class="container">
+		  <div class="row">
+		   <div class="col-sm-12"> 		  	
+		    <h2 class="section__title"><strong>Video Profil</strong> Kami</h2>
+		    <div class="divider">
+		     <hr class="line1">
+		     <hr class="line2">
+		     <hr class="line1">
+		   </div> <!-- / .divider -->
+		 </div>
+		</div> <!-- / .row -->
+		</div> <!-- / .container -->
+    	<div class="container">
 		    <div class="row">
-					<div class="col-sm-5">
+					<div class="col-sm-12">
 						<!-- <h2 class="section__title services__title"><strong>Fasilitas </strong>Kami</h2> -->
-						<h2 class="section__title services__title"><strong>Fasilitas </strong>Kami</h2>
+						<!-- <h2 class="section__title services__title"><strong>Fasilitas </strong>Kami</h2> -->
 						<!-- <p class="services__text">Li Europan lingues es membres del sam familie. Lor separat existentie es un myth. Por scientie, musica, sport etc.</p> -->
 						<div class="services__img">
 							<a href="#services__modal" data-toggle="modal">
@@ -124,62 +104,6 @@
 						</div>
 					</div>
 					<div class="col-sm-7">
-						<div class="row">
-							<div class="col-sm-6">
-								<div class="services__item">
-									<div class="services_item__logo">
-										<i class="icon ion-model-s"></i>
-									</div>
-									<div class="services_item__title">
-										<h3>Parking</h3>
-									</div>
-									<div class="services_item__desc">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit dolor magnam quas cumque.
-									</div>
-								</div> <!-- .services__item -->
-							</div>
-							  <div class="col-sm-6">
-							  	<div class="services__item">
-										<div class="services_item__logo">
-											<i class="icon ion-android-bicycle"></i>
-										</div>
-										<div class="services_item__title">
-											<h3>Fitness Hall</h3>
-										</div>
-										<div class="services_item__desc">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe ullam architecto.
-										</div>
-									</div> <!-- .services__item -->
-							  </div>
-						</div> <!-- .row -->
-						<div class="row">
-						  <div class="col-sm-6">
-						  	<div class="services__item">
-									<div class="services_item__logo">
-										<i class="icon ion-android-restaurant"></i>
-									</div>
-									<div class="services_item__title">
-										<h3>Restaurant</h3>
-									</div>
-									<div class="services_item__desc">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum sint ipsum culpa consequatur.
-									</div>
-								</div> <!-- .services__item -->
-						  </div>
-						  <div class="col-sm-6">
-						  	<div class="services__item">
-									<div class="services_item__logo">
-										<i class="icon ion-android-sunny"></i>
-									</div>
-									<div class="services_item__title">
-										<h3>Spa center</h3>
-									</div>
-									<div class="services_item__desc">
-										Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi quo iure sapiente. Earum est corporis.
-									</div>
-								</div> <!-- .services__item -->
-							</div>  
-						</div> <!-- / .row -->
 					</div>
 		    </div> <!-- / .row -->
 	    </div> <!-- / .container -->

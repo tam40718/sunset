@@ -46,59 +46,10 @@
                 });
             }, 5000);
           </script>
-            <h1 class="subheading"><?php echo $kontak->kontak_subheading;?></h1>        
+            <!-- <h1 class="subheading"><?php echo $kontak->kontak_subheading;?></h1>         -->
           </div>
         </div> <!-- / .row -->
       	<div class="row">
-      		<div class="col-sm-7">
-	        	<div class="section-contacts__form_body">
-              <p class="section-contacts__title">Pesan</p>
-
-              <!-- Please carefully read the README file in order to setup the PHP contact form properly -->
-
-              <!-- Alert message -->
-              <div class="alert" id="form_message" role="alert"></div>
-
-              <!-- Form -->
-              <form id="form_sendemail" class="contacts__form" action="<?php echo base_url('home/pesan') ?>" method="post">
-                
-                <!-- Email -->
-                <div class="form-group">
-                  <label for="email" class="sr-only">Email address</label>
-                  <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Alamat E-mail Anda*">
-                  <span class="help-block"></span>
-                </div>
-                
-                <!-- Name -->
-                <div class="form-group">
-                  <label for="name" class="sr-only">Name</label>
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Masukkan Nama Anda*">
-                  <span class="help-block"></span>
-                </div>
-                
-                <!-- Message -->
-                <div class="form-group">
-                  <label for="message" class="sr-only">Message</label>
-                  <textarea name="message" class="form-control" id="message" rows="6" placeholder="Masukkan Pesan Anda"></textarea>
-                  <span class="help-block"></span>
-                </div>
-                
-                <!-- Note -->
-                <div class="form-group">
-                  <small class="text-muted">
-                    * Wajib Diisi.
-                  </small>
-                </div>
-                
-                <!-- Submit -->
-                <button type="submit" class="btn btn-default">
-                  Kirim Pesan
-                </button>
-
-              </form> <!-- .contacts__form -->
-              
-            </div> <!-- / .section-contacts__form_body -->
-	        </div>
 	        <div class="col-sm-5">
 						<div class="contacts__info">
 							<p class="contacts_info__title"><?php echo $kontak->kontak_judul;?></p>

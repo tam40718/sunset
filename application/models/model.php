@@ -78,13 +78,23 @@ class Model extends CI_Model {
 						->where('a.status_album',$status)
 						->get('tb_foto f');
 	}
+	
+	public function foto_index($limit){
+		return $this->db->join('tb_album a','a.id_album=f.id_album')
+						->where('a.status_album',0)
+						->limit($limit)
+						->get('tb_foto f');
+	}
 
-	public function kamar()
+	public function kamar($limit)
 	{
-		return $this->db->join('tm_gambar_kamar gk','k.id_kamar=gk.id_kamar')
-						->where('gk.status_gambar_kamar','1')
-						->from('tm_kamar k')
-						->get();
+		$this->db->join('tm_gambar_kamar gk','k.id_kamar=gk.id_kamar')
+						->where('gk.status_gambar_kamar','1');
+		if ($limit!=0) {
+			$this->db->limit($limit);
+		}
+		 return $this->db->order_by('k.id_kamar','DESC')
+		 				 ->get('tm_kamar k');
 	}
 
 	public function kamar_rand($id)
@@ -113,10 +123,14 @@ class Model extends CI_Model {
 						->get('tm_gambar_kamar');
 	}
 	
-	public function fasilitas(){
-		return $this->db->where('status_fasilitas',1)
-						->order_by('id_fasilitas','DESC')
-						->get('tm_fasilitas');
+	public function fasilitas($limit){
+		$this->db->where('status_fasilitas',1)
+						->order_by('id_fasilitas','DESC');
+
+		if ($limit!=0) {
+			$this->db->limit($limit);
+		}
+		return $this->db->get('tm_fasilitas');
 	}
 	public function getid_fasilitas($id,$order)
 	{
@@ -126,6 +140,18 @@ class Model extends CI_Model {
 		 				->limit(3)
 		 				->order_by('f.id_fasilitas',$order)
 		 				->get('tm_fasilitas f');			
+	}
+	/////------------------------reservasi
+	public function get_id_kp()
+	{
+		$this->db->select('id_kpesan')
+				 ->order_by('id_kpesan','DESC')
+				 ->limit(1);
+		return $this->db->get('tk_pesan');
+	}
+	public function add($tabel,$data)
+	{
+		return $this->db->insert($tabel,$data);
 	}
 }
 

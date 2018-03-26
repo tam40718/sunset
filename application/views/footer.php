@@ -7,7 +7,7 @@
 					<div class="footer__item">
 						<h2 class="brand__logo">Sunset Hotel</h2>
 						<p class="brand__sublogo">Grand</p>
-						<ul class="social__icons">
+						<!-- <ul class="social__icons">
 							<li class="social-icons__item"><a href="#"><i class="icon ion-social-twitter" aria-hidden="true"></i></a></li>
 							<li class="social-icons__item"><a href="#"><i class="icon ion-social-facebook" aria-hidden="true"></i></a></li>
 							<li class="social-icons__item"><a href="#"><i class="icon ion-social-googleplus" aria-hidden="true"></i></a></li>

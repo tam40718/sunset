@@ -1,7 +1,15 @@
-
-    <link rel="stylesheet" href="<?php echo base_url().'assets/' ?>plugins/owl-carousel/dist/assets/owl.carousel.min.css">
+<link rel="stylesheet" href="<?php echo base_url().'assets/' ?>plugins/owl-carousel/dist/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="<?php echo base_url().'assets/' ?>plugins/owl-carousel/dist/assets/owl.theme.default.min.css">
-    <script src="<?php echo base_url().'assets/' ?>plugins/owl-carousel/dist/owl.carousel.min.js"></script>
+    <link href="<?php echo base_url().'assets/' ?>plugins/lightbox/dist/css/lightbox.css" rel="stylesheet">
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script type="text/javascript" src="<?php echo base_url().'assets/js/jquery.waterwheelCarousel.js' ?>"></script>
+  <!-- JS Plugins -->
+  <script src="<?php echo base_url().'assets/' ?>plugins/moment-develop/moment.js"></script>
+  <script src="<?php echo base_url().'assets/' ?>plugins/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="<?php echo base_url().'assets/' ?>plugins/waypoints/lib/jquery.waypoints.min.js"></script>
+  <script src="<?php echo base_url().'assets/' ?>plugins/lightbox/dist/js/lightbox.min.js"></script>
+  <script src="<?php echo base_url().'assets/' ?>plugins/owl-carousel/dist/owl.carousel.min.js"></script>
+  <script src="<?php echo base_url().'assets/' ?>plugins/contact/contact.js"></script>
     <!-- section text header -->
     <section class="section__text-header">
     	<div class="container">
@@ -19,7 +27,82 @@
     	  </div> <!-- / .row -->
     	</div> <!-- / .container -->
     </section> <!-- / .section text-header -->
+                <br><br><br>
+<section class="section__availability"> 
+ <div class="container"> 
+  <div class="row"> 
+   <div class="col-sm-12"> 
 
+    <!-- Reservation form --> 
+    <form class="reservation__form" method="post" action="<?=site_url('home/cek_sedia');?>"> 
+     <div class="form-group">
+      <div class="form-group__inner"> 
+       <label for="reservation__check-in">Tanggal Datang</label>
+       <input type="text" class="form-control date" name="checkin" id="reservation__check-in" value="<?php if(!empty($this->session->userdata('checkin'))){ echo date('d M Y', strtotime($this->session->userdata('checkin'))); }else{ echo date('d M Y');} ?>"> 
+     </div> <!-- / .form-group__inner --> 
+   </div> <!-- / .form-group --> 
+   <div class="form-group"> 
+    <div class="form-group__inner"> 
+     <label for="reservation__check-out">Tanggal Pergi</label>
+     <input type="text" class="form-control date" name="checkout" id="reservation__check-out" value="<?php if(!empty($this->session->userdata('checkout'))){ echo date('d M Y', strtotime($this->session->userdata('checkout'))); }else{ echo date('d M Y', strtotime('+1 day'));} ?>">
+   </div> <!-- / .form-group__inner --> 
+ </div> <!-- / .form-group --> 
+ <div class="form-group"> 
+  <div class="form-group__inner"> 
+   <label for="reservation__adults">Dewasa</label>
+   <input type="text" id="reservation__adults" value="<?php if(!empty($this->session->userdata('dewasa'))){ echo $this->session->userdata('dewasa'); }else{ echo "2";} ?>" name="dewasa">
+   <div class="dropdown reservation-dropdown">
+    <button class="dropdown-toggle" type="button" id="adults-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+     <span><?php if(!empty($this->session->userdata('dewasa'))){ echo $this->session->userdata('dewasa'); }else{ echo "2";} ?></span>
+     <i class="icon ion-chevron-down"></i>
+   </button>
+   <ul class="dropdown-menu" aria-labelledby="adults-dropdown">
+     <li><a href="#">1 </a></li>
+     <li><a href="#">2 </a></li>
+     <li><a href="#">3 </a></li>
+   </ul>
+ </div> <!-- . -->
+</div> <!-- / .form-group__inner --> 
+</div> <!-- / .form-group --> 
+<div class="form-group"> 
+  <div class="form-group__inner">
+   <label for="reservation__children">Anak</label>
+   <input type="text" id="reservation__children" value="<?php if(!empty($this->session->userdata('anak'))){ echo $this->session->userdata('anak'); }else{ echo "0";} ?>" name="anak">
+   <div class="dropdown reservation-dropdown">
+    <button class="dropdown-toggle" type="button" id="children-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+     <span><?php if(!empty($this->session->userdata('anak'))){ echo $this->session->userdata('anak'); }else{ echo "0";} ?></span>
+     <i class="icon ion-chevron-down"></i>
+   </button>
+   <ul class="dropdown-menu" aria-labelledby="children-dropdown">
+     <li><a href="#">0 </a></li>
+     <li><a href="#">1 </a></li>
+     <li><a href="#">2 </a></li>
+   </ul>
+ </div> <!-- . -->
+</div> <!-- / .form-group__inner --> 
+</div> <!-- / .form-group -->  
+
+<div class="form-group"> 
+  <div class="form-group__inner">
+   <label for="reservation__children">Kode Promosi</label>
+   <input type="text" id="kode" name="kode" class="form-control" placeholder="Masukkan Kode" value="<?php if(!empty($this->session->userdata('id_promo'))){ echo $this->session->userdata('id_promo');} ?>">
+</div> <!-- / .form-group__inner --> 
+
+</div> 
+</div> <!-- / .row -->
+<div class="row"> 
+ <div class="col-xs-12">
+
+  <!-- Reservation button --> 
+  <div class="reservation__button">
+   <button type="submit" class="btn btn-reservation">cek Ketersediaan</button>
+  </div> <!-- / .reservation__button -->  
+
+</form> <!-- / .reservation__form --> 
+</div> 
+</div> <!-- / .row -->  
+</div> <!-- / .container --> 
+</section> <!-- .section__availability -->
     <!-- section room-detail -->
     <section class="section__room-detail">
     	<div class="container">
@@ -45,7 +128,7 @@
               <div class="room__desc">
               <?php echo $list_kamar->fasilitas_kamar ?>
               </div>
-              <a href="<?=site_url('home/tampil_reservation');?>" class="btn">Pesan</a>
+              <a href="<?=site_url('home/pesan\/').$list_kamar->id_kamar;?>" class="btn">Pesan</a>
             </div> <!-- .room-detail__body -->
             <!-- <div class="room__reviews"> -->
               <!-- <p class="subheading">Room reviews</p> -->

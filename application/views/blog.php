@@ -11,11 +11,11 @@
 
          <!-- Breadcrumbs -->
          <ol class="breadcrumb">
-          <li><a href="index.html">Home</a></li>
-          <li class="active">Blog</li>
+          <li><a href="<?php echo base_url('home') ?>">Beranda</a></li>
+          <li class="active">Paket Wisata</li>
         </ol>
 
-        <p class="welcome_content__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        <!-- <p class="welcome_content__desc">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p> -->
       </div> <!-- .welcome__content -->
     </div>
   </div> <!-- / .row -->

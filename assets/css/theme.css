@@ -2547,7 +2547,7 @@ output {
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 .form-control:focus {
-  border-color: #deaa86;
+  border-color: #87a732;
   outline: 0;
   box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(222, 170, 134, 0.6);
 }
@@ -3526,13 +3526,13 @@ tbody.collapse.in {
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: #deaa86;
+  color: #87a732;
   background-color: transparent;
 }
 .dropdown-menu > .active > a,
 .dropdown-menu > .active > a:hover,
 .dropdown-menu > .active > a:focus {
-  color: #deaa86;
+  color: #87a732;
   text-decoration: none;
   outline: 0;
   background-color: transparent;
@@ -4470,13 +4470,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #deaa86;
+  color: #87a732;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #deaa86;
+  color: #87a732;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .disabled > a,
@@ -4503,7 +4503,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
   background-color: transparent;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 990px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -4511,13 +4511,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #deaa86;
+    color: #87a732;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #deaa86;
+    color: #87a732;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
@@ -4531,14 +4531,14 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #374853;
 }
 .navbar-default .navbar-link:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 .navbar-default .btn-link {
   color: #374853;
 }
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
-  color: #deaa86;
+  color: #87a732;
 }
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
@@ -6326,7 +6326,7 @@ button.close {
   height: 10px;
   margin: 1px;
   text-indent: -999px;
-  border: 1px solid #deaa86;
+  border: 1px solid #87a732;
   border-radius: 10px;
   cursor: pointer;
   background-color: #000 \9;
@@ -7082,7 +7082,7 @@ button.close {
   margin-bottom: 40px;
 }
 .carousel .carousel-inner .item .item__container .item-container__inner .item__content .item_content__title > span {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .carousel .carousel-inner .item .item__container .item-container__inner .item__content .item_content__title {
@@ -7212,7 +7212,7 @@ button.close {
   padding: 15px 30px;
   font-size: 13px;
   letter-spacing: 0.5px;
-  border-color: #deaa86;
+  border-color: #87a732;
   background-color: transparent;
   -webkit-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
@@ -7252,7 +7252,7 @@ button.close {
 .btn-search:active,
 .btn-search:active:focus {
   background-color: transparent;
-  color: #deaa86;
+  color: #87a732;
   border-color: transparent;
 }
 .btn-search > i {
@@ -7265,8 +7265,8 @@ button.close {
 .btn-reservation:hover,
 .btn-reservation:focus {
   color: #374853;
-  border-color: #deaa86;
-  background-color: #deaa86;
+  border-color: #87a732;
+  background-color: #87a732;
 }
 .btn-newsletter {
   border-color: transparent;
@@ -7283,7 +7283,7 @@ button.close {
 .btn-newsletter:active,
 .btn-newsletter:active:focus {
   background-color: transparent;
-  color: #deaa86;
+  color: #87a732;
   border-color: transparent;
 }
 .btn-newsletter > i {
@@ -7307,11 +7307,11 @@ button.close {
 .btn-filter:focus,
 .btn-filter:active,
 .btn-filter:active:focus {
-  color: #deaa86;
+  color: #87a732;
 }
 .btn-filter:active,
 .btn-filter:focus {
-  border-bottom: 3px solid #deaa86;
+  border-bottom: 3px solid #87a732;
 }
 .btn-booking {
   margin-top: 20px;
@@ -7322,8 +7322,8 @@ button.close {
   }
 }
 .btn-top {
-  border-color: #deaa86;
-  background-color: #deaa86;
+  border-color: #87a732;
+  background-color: #87a732;
   color: #fff;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -7333,7 +7333,7 @@ button.close {
 .btn-top:active,
 .btn-top:active:focus {
   border-color: #374853;
-  background-color: #deaa86;
+  background-color: #87a732;
 }
 /**
  * Forms
@@ -7344,7 +7344,7 @@ button.close {
   box-shadow: none;
 }
 .form-control option:not(selected) {
-  color: #deaa86;
+  color: #87a732;
 }
 .contacts__form > .form-group label,
 .comments__form > .form-group label {
@@ -7431,10 +7431,10 @@ button.close {
 .dropdown .dropdown-menu > li:hover,
 .dropdown .dropdown-menu > li:active,
 .dropdown .dropdown-menu > li:focus {
-  border-left: 5px solid #deaa86;
+  border-left: 5px solid #87a732;
 }
 .dropdown .dropdown-menu > li.active {
-  border-left: 5px solid #deaa86;
+  border-left: 5px solid #87a732;
 }
 .dropdown.lang-menu {
   display: inline-block;
@@ -7446,7 +7446,7 @@ button.close {
 .dropdown.lang-menu .dropdown-toggle:hover,
 .dropdown.lang-menu .dropdown-toggle:active,
 .dropdown.lang-menu .dropdown-toggle:focus {
-  color: #deaa86;
+  color: #87a732;
 }
 .reservation-dropdown {
   color: #ffffff;
@@ -7519,7 +7519,7 @@ button.close {
 }
 .navbar .navbar-header .navbar-brand .navbar-brand__sublogo {
   text-transform: uppercase;
-  color: #deaa86;
+  color: #87a732;
   font-size: 11px;
   letter-spacing: 6px;
   margin-top: -10px;
@@ -7602,7 +7602,7 @@ button.close {
 .nav-tabs > li > a:hover,
 .nav-tabs > li > a:focus {
   background-color: transparent;
-  color: #deaa86;
+  color: #87a732;
   outline: none;
 }
 .nav-tabs > li.active > a {
@@ -7614,7 +7614,7 @@ button.close {
   left: 0;
   right: 0;
   top: 100%;
-  border-top: 2px solid #deaa86;
+  border-top: 2px solid #87a732;
 }
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
@@ -7666,7 +7666,7 @@ button.close {
  * Breadcrumbs
  */
 .breadcrumb > li > a {
-  color: #deaa86;
+  color: #87a732;
   -webkit-transition: color 0.3s;
   transition: color 0.3s;
   text-decoration: none;
@@ -7716,7 +7716,7 @@ button.close {
 .section__footer .footer__body .footer__item .footer__links > li > a:hover,
 .section__footer .footer__body .footer__item .footer__links > li > a:focus,
 .section__footer .footer__body .footer__item .footer__links > li > a:active {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__footer .footer__body .footer__item .brand__logo {
   font-size: 42px;
@@ -7739,7 +7739,7 @@ button.close {
 .section__footer .footer__body .footer__item .brand__sublogo {
   text-align: center;
   text-transform: uppercase;
-  color: #deaa86;
+  color: #87a732;
   font-size: 14px;
   letter-spacing: 10px;
   margin-top: -5px;
@@ -7773,7 +7773,7 @@ button.close {
   transition: color 0.3s;
 }
 .section__footer .footer__body .footer__item .social__icons .social-icons__item > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 767px) {
   .section__footer .footer__body .footer__item .social__icons .social-icons__item > a {
@@ -7782,7 +7782,7 @@ button.close {
 }
 .section__footer .footer__body .footer__item .newsletter__title {
   font-family: 'Montserrat', sans-serif;
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 8px;
   text-transform: uppercase;
   font-size: 14px;
@@ -7835,7 +7835,7 @@ button.close {
 }
 #loader-wrapper #loader:before {
   border: 3px solid transparent;
-  border-top-color: #deaa86;
+  border-top-color: #87a732;
   border-radius: 50%;
   content: "";
   position: absolute;
@@ -7963,7 +7963,7 @@ Last change:  04/30/2017
 .divider .line1,
 .divider .line2 {
   height: 1px;
-  background-color: #deaa86;
+  background-color: #87a732;
   margin: 3px auto;
 }
 .divider .line1 {
@@ -7992,7 +7992,7 @@ Last change:  04/30/2017
   margin-bottom: 15px;
 }
 .section__title > strong {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 767px) {
   .section__title {
@@ -8034,7 +8034,7 @@ Last change:  04/30/2017
   font-size: 12px;
 }
 .section__info .section_info__body .info__column-left .section_info__contact > p > i {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .section__info .section_info__body .info__column-left .section_info__contact {
@@ -8061,7 +8061,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__info .section_info__body .info__column-right .social__icons .social-icons__item > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__info .section_info__body .info__column-right .search-form {
   display: inline-block;
@@ -8133,7 +8133,7 @@ Last change:  04/30/2017
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   letter-spacing: 16px;
-  color: #deaa86;
+  color: #87a732;
   text-transform: uppercase;
   margin-top: -10px;
 }
@@ -8219,7 +8219,7 @@ Last change:  04/30/2017
 }
 .section__availability .reservation__form > .form-group {
   display: inline-block;
-  width: 25%;
+  width: 20%;
   margin-bottom: 50px;
 }
 @media (max-width: 1199px) {
@@ -8240,7 +8240,7 @@ Last change:  04/30/2017
 .section__availability .reservation__form > .form-group > .form-group__inner > label {
   text-transform: uppercase;
   letter-spacing: 4px;
-  color: #deaa86;
+  color: #87a732;
   font-weight: 400;
   font-size: 12px;
   margin-bottom: 5px;
@@ -8370,7 +8370,7 @@ Last change:  04/30/2017
   }
 }
 .section__about .section_about__content .about__desc .about_desc__subtitle {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
 }
@@ -8548,7 +8548,7 @@ Last change:  04/30/2017
   transition: opacity 0.4s, transform 0.4s, -webkit-transform 0.4s;
   -webkit-transition-delay: 0.45s;
           transition-delay: 0.45s;
-  border-bottom: 1px solid #deaa86;
+  border-bottom: 1px solid #87a732;
 }
 @media (max-width: 1199px) {
   .section__best-rooms .best-rooms__content .best-rooms__item figcaption > h3 {
@@ -8673,7 +8673,7 @@ Last change:  04/30/2017
   transition: opacity 0.3s, transform 0.3s, -webkit-transform 0.3s;
   text-transform: uppercase;
   font-size: 13px;
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 1px;
   text-decoration: none;
 }
@@ -8795,7 +8795,7 @@ Last change:  04/30/2017
 .section__services .services__item .services_item__divider > i {
   font-size: 22px;
   margin: 0 15px;
-  color: #deaa86;
+  color: #87a732;
 }
 .section__services .services__item .services_item__title {
   font-weight: 700;
@@ -8854,7 +8854,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__services-alt .services__img > a:hover:after {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__services-alt .services__item {
   margin: 20px;
@@ -8886,7 +8886,7 @@ Last change:  04/30/2017
 }
 .section__services-alt .services__item .services_item__logo > i {
   font-size: 56px;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .section__services-alt .services__item .services_item__logo > i {
@@ -8956,7 +8956,7 @@ Last change:  04/30/2017
   font-size: 52px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #deaa86;
+  color: #87a732;
   margin-top: 30px;
   text-align: center;
 }
@@ -9106,7 +9106,7 @@ Last change:  04/30/2017
 .section__testimonials .testimonials__body .testimonials__wrapper .testimonials__item .testimonials__caption .testimonials_caption__prof {
   font-style: italic;
   font-family: 'Playfair Display', serif;
-  color: #deaa86;
+  color: #87a732;
 }
 /*** 13. Section: Events ***/
 .section__events {
@@ -9142,7 +9142,7 @@ Last change:  04/30/2017
   text-align: center;
 }
 .section__events .events__item .events-item__body .events-item__header .events-item__date .item_date__nbr {
-  color: #deaa86;
+  color: #87a732;
   font-size: 72px;
   font-weight: 700;
   line-height: 1;
@@ -9219,7 +9219,7 @@ Last change:  04/30/2017
   }
 }
 .section__events .news__title {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__events .events__title {
   color: #374853;
@@ -9271,7 +9271,7 @@ Last change:  04/30/2017
   }
 }
 .section__contacts .section-contacts__form_body .section-contacts__title {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
 }
@@ -9307,7 +9307,7 @@ Last change:  04/30/2017
   }
 }
 .section__contacts .contacts__info .contacts_info__title {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   text-align: center;
@@ -9338,7 +9338,7 @@ Last change:  04/30/2017
   float: left;
   margin-top: -8px;
   font-size: 40px;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .section__contacts .contacts__info .contacts_info__content > li > i {
@@ -9394,7 +9394,7 @@ Last change:  04/30/2017
   font-size: 66px;
   font-weight: 700;
   margin-top: -250px;
-  color: #deaa86;
+  color: #87a732;
   line-height: 1;
 }
 @media (max-width: 1199px) {
@@ -9449,7 +9449,7 @@ Last change:  04/30/2017
   font-size: 60px;
   font-family: 'Montserrat', sans-serif;
   font-weight: 700;
-  color: #deaa86;
+  color: #87a732;
   margin-top: 80px;
 }
 @media (max-width: 991px) {
@@ -9476,7 +9476,7 @@ Last change:  04/30/2017
   }
 }
 .section__contacts-alt .section-contacts__form_body .section-contacts__title {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   text-align: center;
@@ -9507,7 +9507,7 @@ Last change:  04/30/2017
   }
 }
 .section__contacts-alt .contacts__info .contacts_info__title {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   text-align: center;
@@ -9534,7 +9534,7 @@ Last change:  04/30/2017
   float: left;
   margin-top: -8px;
   font-size: 40px;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .section__contacts-alt .contacts__info .contacts_info__content > li > i {
@@ -9736,7 +9736,7 @@ Last change:  04/30/2017
   font-size: 68px;
   font-weight: 700;
   margin-bottom: 0;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .section__data .section-data__item .section-data__nbr {
@@ -9766,7 +9766,7 @@ Last change:  04/30/2017
 }
 /*** 19. Section: Quote ***/
 .section__quote {
-  background-color: #deaa86;
+  background-color: #87a732;
   padding: 60px 0;
   color: white;
   text-align: center;
@@ -9881,7 +9881,7 @@ Last change:  04/30/2017
   display: inline-block;
   float: right;
   font-weight: 700;
-  color: #deaa86;
+  color: #87a732;
 }
 .section__rooms-1 .rooms__item .rooms__desc .rooms_desc__header .rooms_desc__price > span {
   font-size: 24px;
@@ -9913,7 +9913,7 @@ Last change:  04/30/2017
 }
 .section__rooms-1 .rooms__item .rooms__desc .rooms_desc__services > li > i {
   font-size: 20px;
-  color: #deaa86;
+  color: #87a732;
   margin-right: 5px;
 }
 .section__rooms-1 .rooms__item .rooms__desc .btn-rooms {
@@ -9967,7 +9967,7 @@ Last change:  04/30/2017
   display: inline-block;
   float: right;
   font-weight: 700;
-  color: #deaa86;
+  color: #87a732;
 }
 .section__rooms-2 .rooms__item .rooms__desc .rooms_desc__header .rooms_desc__price > span {
   font-size: 24px;
@@ -9998,7 +9998,7 @@ Last change:  04/30/2017
 }
 .section__rooms-2 .rooms__item .rooms__desc .rooms_desc__services > li > i {
   font-size: 20px;
-  color: #deaa86;
+  color: #87a732;
   margin-right: 5px;
 }
 /*** 22. Section: Room-detail ***/
@@ -10023,8 +10023,8 @@ Last change:  04/30/2017
   }
 }
 .section__room-detail .room_detail__body .room_price__body {
-  border-top: 1px solid #deaa86;
-  border-bottom: 1px solid #deaa86;
+  border-top: 1px solid #87a732;
+  border-bottom: 1px solid #87a732;
   padding: 15px 0;
   margin: 30px 0;
 }
@@ -10044,7 +10044,7 @@ Last change:  04/30/2017
   display: inline-block;
   float: right;
   font-weight: 700;
-  color: #deaa86;
+  color: #87a732;
   margin: 0;
 }
 @media (max-width: 767px) {
@@ -10061,7 +10061,7 @@ Last change:  04/30/2017
   }
 }
 .section__room-detail .room_detail__body .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10082,7 +10082,7 @@ Last change:  04/30/2017
   }
 }
 .section__room-detail .room__reviews .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10136,7 +10136,7 @@ Last change:  04/30/2017
   }
 }
 .section__room-detail .room-detail__sidebar .room_features__body .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10151,7 +10151,7 @@ Last change:  04/30/2017
 .section__room-detail .room-detail__sidebar .room_features__body .room__features .feature__item > i {
   float: left;
   margin-top: -12px;
-  color: #deaa86;
+  color: #87a732;
   font-size: 30px;
 }
 .section__room-detail .room-detail__sidebar .room_features__body .room__features .feature__item .feature_item__title {
@@ -10178,7 +10178,7 @@ Last change:  04/30/2017
   }
 }
 .section__room-detail .room-detail__sidebar .similar__rooms .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10212,7 +10212,7 @@ Last change:  04/30/2017
 .section__room-detail .room-detail__sidebar .similar__rooms .similar-rooms__list .list__item .list_item__body figcaption > .item__price {
   display: inline-block;
   float: right;
-  color: #deaa86;
+  color: #87a732;
   font-weight: 700;
   font-size: 18px;
   margin-top: 10px;
@@ -10246,7 +10246,7 @@ Last change:  04/30/2017
   }
 }
 .section__room-detail .room-detail__sidebar .info__body .info__title {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10262,7 +10262,7 @@ Last change:  04/30/2017
   float: left;
   margin-top: -8px;
   font-size: 40px;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .section__room-detail .room-detail__sidebar .info__body .info__content > li > i {
@@ -10331,7 +10331,7 @@ Last change:  04/30/2017
   }
 }
 .section__reservation .reservation__form-body .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   margin-left: 15px;
@@ -10354,7 +10354,7 @@ Last change:  04/30/2017
   font-size: 12px;
 }
 .section__reservation .reservation__form-body .reservation__form .conditions {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__reservation .booking__details-body {
   background: #ffffff;
@@ -10373,7 +10373,7 @@ Last change:  04/30/2017
   }
 }
 .section__reservation .booking__details-body .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10405,7 +10405,7 @@ Last change:  04/30/2017
   margin-top: 5px;
   font-size: 22px;
   font-weight: 700;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 1199px) {
   .section__reservation .booking__details-body .room__details figcaption .room__price {
@@ -10455,7 +10455,7 @@ Last change:  04/30/2017
 .section__reservation .booking__details-body .details-info > .total-price > p {
   font-size: 22px;
   font-weight: 700;
-  color: #deaa86;
+  color: #87a732;
 }
 .section__reservation .info__body {
   padding: 40px;
@@ -10474,7 +10474,7 @@ Last change:  04/30/2017
   }
 }
 .section__reservation .info__body .info__title {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10490,7 +10490,7 @@ Last change:  04/30/2017
   float: left;
   margin-top: -8px;
   font-size: 40px;
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 991px) {
   .section__reservation .info__body .info__content > li > i {
@@ -10629,7 +10629,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog .blog__item .blog-item__content .blog-item__footer .footer__item .blog-item__link > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__blog .blog__item .blog-item__content .blog-item__footer .footer__item .social__icons {
   text-align: center;
@@ -10654,7 +10654,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog .blog__item .blog-item__content .blog-item__footer .footer__item .social__icons .social-icons__item > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 767px) {
   .section__blog .blog__item .blog-item__content .blog-item__footer .footer__item .social__icons .social-icons__item > a {
@@ -10668,7 +10668,7 @@ Last change:  04/30/2017
   margin: 30px 0;
 }
 .section__blog .blog__sidebar .sidebar__item .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10702,7 +10702,7 @@ Last change:  04/30/2017
   transition: all 0.2s;
 }
 .section__blog .blog__sidebar .sidebar__item .categories > li > a:hover {
-  color: #deaa86;
+  color: #87a732;
   margin-left: 6px;
 }
 .section__blog .blog__sidebar .sidebar__item .newsletter__form {
@@ -10737,7 +10737,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog .blog__sidebar .sidebar__item .social__icons .social-icons__item > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 767px) {
   .section__blog .blog__sidebar .sidebar__item .social__icons .social-icons__item > a {
@@ -10785,7 +10785,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog .blog__sidebar .sidebar__item .tags > li > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 /*** 25. Section: Blog Item ***/
 .section__blog-item {
@@ -10869,7 +10869,7 @@ Last change:  04/30/2017
 }
 .section__blog-item .blog__item .blog-item__content .blog-item__tags > p {
   display: inline-block;
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -10929,7 +10929,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog-item .blog__item .blog-item__content .blog-item__footer .footer__item .blog-item__link > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__blog-item .blog__item .blog-item__content .blog-item__footer .footer__item .social__icons {
   text-align: center;
@@ -10954,7 +10954,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog-item .blog__item .blog-item__content .blog-item__footer .footer__item .social__icons .social-icons__item > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 767px) {
   .section__blog-item .blog__item .blog-item__content .blog-item__footer .footer__item .social__icons .social-icons__item > a {
@@ -10972,7 +10972,7 @@ Last change:  04/30/2017
   }
 }
 .section__blog-item .comments .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -11038,7 +11038,7 @@ Last change:  04/30/2017
 .section__blog-item .comments .comments-list__cildren .comment .comment__reply > a:active,
 .section__blog-item .comments .comments__list .comment .comment__reply > a:active:focus,
 .section__blog-item .comments .comments-list__cildren .comment .comment__reply > a:active:focus {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__blog-item .comments .comments__list .comment .comments-list__cildren,
 .section__blog-item .comments .comments-list__cildren .comment .comments-list__cildren {
@@ -11062,7 +11062,7 @@ Last change:  04/30/2017
   margin-bottom: 30px;
 }
 .section__blog-item .blog__sidebar .sidebar__item .subheading {
-  color: #deaa86;
+  color: #87a732;
   letter-spacing: 6px;
   text-transform: uppercase;
   font-size: 12px;
@@ -11096,7 +11096,7 @@ Last change:  04/30/2017
   transition: all 0.2s;
 }
 .section__blog-item .blog__sidebar .sidebar__item .categories > li > a:hover {
-  color: #deaa86;
+  color: #87a732;
   margin-left: 6px;
 }
 .section__blog-item .blog__sidebar .sidebar__item .newsletter__form {
@@ -11128,7 +11128,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog-item .blog__sidebar .sidebar__item .social__icons .social-icons__item > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 767px) {
   .section__blog-item .blog__sidebar .sidebar__item .social__icons .social-icons__item > a {
@@ -11176,7 +11176,7 @@ Last change:  04/30/2017
   transition: color 0.3s;
 }
 .section__blog-item .blog__sidebar .sidebar__item .tags > li > a:hover {
-  color: #deaa86;
+  color: #87a732;
 }
 /*** 26. Section: 404 Error Page ***/
 .section__404error {
@@ -11260,7 +11260,7 @@ Last change:  04/30/2017
 .section__404error .section__content .section_content__action > a:hover,
 .section__404error .section__content .section_content__action > a:active,
 .section__404error .section__content .section_content__action > a:focus {
-  color: #deaa86;
+  color: #87a732;
 }
 .section__404error .page404__bg {
   position: absolute;
@@ -11322,7 +11322,7 @@ Last change:  04/30/2017
   font-family: 'Montserrat', sans-serif;
   font-size: 24px;
   letter-spacing: 16px;
-  color: #deaa86;
+  color: #87a732;
   text-transform: uppercase;
   margin-top: -10px;
 }
@@ -11421,7 +11421,7 @@ Last change:  04/30/2017
 }
 .section_layouts .section__heading > span,
 .section_pages .section__heading > span {
-  color: #deaa86;
+  color: #87a732;
   font-weight: 700;
 }
 @media (max-width: 767px) {
@@ -11487,7 +11487,7 @@ Last change:  04/30/2017
   font-size: 14px;
 }
 .section_layouts-footer a {
-  color: #deaa86;
+  color: #87a732;
 }
 @media (max-width: 767px) {
   .section_layouts-footer {

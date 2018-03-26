@@ -36,18 +36,8 @@
               <div class="rooms__desc">
                 <div class="rooms_desc__header">
                   <h2 class="rooms_desc__title"><?php echo $lf->nama_fasilitas ?></h2>
-                  <!-- <p class="rooms_desc__price"><span>$50</span> / night</p> -->
                 </div> <!-- .rooms_desc__header -->
                 <p class="rooms_desc__desc"><?php echo substr($lf->deskripsi_fasilitas, 0,200) ?></p>
-                  <!-- <ul class="rooms_desc__services">
-                    <li><i class="icon ion-android-person"></i> One king bed</li>
-                    <li><i class="icon ion-coffee"></i> Breakfast</li>
-                    <li><i class="icon ion-android-sunny"></i> Air conditioning</li>
-                    <li><i class="icon ion-wineglass"></i> Mini bar</li>
-                    <li><i class="icon ion-monitor"></i> LCD TV</li>
-                    <li><i class="icon ion-wifi"></i> Wi-Fi</li>
-                  </ul>  -->
-                  <!-- .rooms_desc__services -->
                 
               </div> <!-- / .rooms__desc -->
             </div> <!-- .rooms__item -->
