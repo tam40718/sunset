@@ -315,6 +315,23 @@ class Home extends CI_Controller {
     	}
     	// echo $weekDay;
 	}
+	public function list_keranjang($idk)
+	{
+		$data = $this->Model->list_keranjang($idk);
+		if ($data->num_rows()>0) {
+			echo json_encode($this->Model->list_keranjang($idk)->result());
+		}else{
+			echo "0";
+		}
+		
+	}
+	public function keranjang_hapus($id)
+	{
+		// $iddk = $this->input->post('id');
+		$idd['id_kdet_pesan']=$id;
+		$this->Model->hapus('tk_det_pesan',$idd);
+		redirect(base_url('home/tampil_reservation'));
+	}
 	public function id_otok()
 	{
 		$fix=0;
@@ -331,8 +348,8 @@ class Home extends CI_Controller {
 			$tgl_angk = date('ymd').'_001';
 		}
 		return $kode_jadi= $kode.'_'.$tgl_angk;
-	
 	}
+
 
 }
 

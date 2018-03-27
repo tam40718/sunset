@@ -116,9 +116,42 @@
                 </div> <!-- .room_gallery__item -->
                 <?php } ?>
               </div> <!-- .room-detail__gallery -->
+              <?php 
+                if (!empty($this->session->userdata('checkin'))) {
+                  $ci = date('Y-m-d',strtotime($this->session->userdata('checkin')));
+                }else{
+                  $ci = date('Y-m-d');
+                }
+                
+                if (!empty($this->session->userdata('checkout'))) {
+                  $co = date('Y-m-d',strtotime($this->session->userdata('checkout')));
+                }else{
+                  $co = date('Y-m-d', strtotime('+1 day'));
+                }
+                $stop='true'; 
+                $harga=0;
+                $j=0;
+                while ($stop=='true') {
+                    $stop='false';
+                  if ($ci==$co) {
+                    $stop='false';
+                  }else{
+                  $j++;
+                    $weekDay = date('N', strtotime($ci));
+                    if ($weekDay == 0 || $weekDay == 6){
+                      $harga+=$list_kamar->hight_kamar;
+                    }else{
+                      $harga+=$list_kamar->low_kamar;
+                    }
+                    $stop='true';
+                    $ci = date('Y-m-d', strtotime($ci.'+1 day'));
+                  }
+                }
+                $total=$harga/$j;
+                ?>
               <div class="room_price__body">
                 <h2 class="room__name"><?php echo $list_kamar->nama_kamar ?></h2>
-                <p class="room__price"><span><?php echo 'RP.'.$list_kamar->hight_kamar ?></span> / Malam</p>
+                <p class="room__price"><span><?php echo 'RP.'.$total ?></span> / Malam</p>
               </div>
               <p class="subheading">Deskripsi Kamar</p>
               <div class="room__desc">
@@ -203,6 +236,39 @@
                 <p class="subheading">Kamar Lainnya</p>
                 <ul class="similar-rooms__list">
                   <?php foreach ($sidebar as $s) { ?>
+                  <?php 
+                    if (!empty($this->session->userdata('checkin'))) {
+                      $ci = date('Y-m-d',strtotime($this->session->userdata('checkin')));
+                    }else{
+                      $ci = date('Y-m-d');
+                    }
+                    
+                    if (!empty($this->session->userdata('checkout'))) {
+                      $co = date('Y-m-d',strtotime($this->session->userdata('checkout')));
+                    }else{
+                      $co = date('Y-m-d', strtotime('+1 day'));
+                    }
+                    $stop='true'; 
+                    $harga=0;
+                    $j=0;
+                    while ($stop=='true') {
+                        $stop='false';
+                      if ($ci==$co) {
+                        $stop='false';
+                      }else{
+                      $j++;
+                        $weekDay = date('N', strtotime($ci));
+                        if ($weekDay == 0 || $weekDay == 6){
+                          $harga+=$s->hight_kamar;
+                        }else{
+                          $harga+=$s->low_kamar;
+                        }
+                        $stop='true';
+                        $ci = date('Y-m-d', strtotime($ci.'+1 day'));
+                      }
+                    }
+                    $total=$harga/$j;
+                    ?>
                   <li class="list__item">
                     <a href="<?=site_url('home/tampil_room_detail/'.$s->id_kamar);?>">
                       <figure class="list_item__body">
@@ -210,7 +276,7 @@
                         <figcaption>
                           <h3><?php echo $s->nama_kamar ?></h3>
                           <div class="item__price">
-                            <?php echo 'RP.'.$s->hight_kamar ?> <small> / Malam</small>
+                            <?php echo 'RP.'.$total ?> <small> / Malam</small>
                           </div>
                         </figcaption>
                       </figure> <!-- / .list_item__body -->  

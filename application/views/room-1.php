@@ -126,7 +126,7 @@
                   if (!empty($this->session->userdata('checkout'))) {
                     $co = date('Y-m-d',strtotime($this->session->userdata('checkout')));
                   }else{
-                    $co = date('Y-m-d');
+                    $co = date('Y-m-d', strtotime('+1 day'));
                   }
                   $stop='true'; 
                   $harga=0;
@@ -143,7 +143,6 @@
                       }else{
                         $harga+=$lk->low_kamar;
                       }
-                      echo "<br>".$j.' : '.$harga;
                       $stop='true';
                       $ci = date('Y-m-d', strtotime($ci.'+1 day'));
                     }

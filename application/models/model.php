@@ -153,6 +153,16 @@ class Model extends CI_Model {
 	{
 		return $this->db->insert($tabel,$data);
 	}
+	public function hapus($tabel,$id)
+	{
+		return $this->db->delete($tabel,$id);
+	}
+	public function list_keranjang($idk)
+	{
+		return $this->db->join('tk_det_pesan dp','dp.id_kpesan=p.id_kpesan')
+						->join('tm_kamar tk','tk.id_kamar=dp.id_kamar')
+						->get('tk_pesan p');
+	}
 }
 
 /* End of file modeltoyota.php */

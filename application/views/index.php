@@ -203,7 +203,7 @@
       <h3 class="about_desc__title"><?php echo $tentang->about_judul;?></h3>
       <p class="about_desc__desc"><?php echo substr($tentang->about_deskripsi, 0, 100);?></p>
       <h4 class="about_desc__quote"><?php echo substr($tentang->about_deskripsi2, 0, 100);?></h4>
-    <a href="about.html" class="btn btn-default">Lebih Lanjut</a>
+    <a href="<?php echo base_url("home/tentang") ?>" class="btn btn-default">Lebih Lanjut</a>
   </div> <!-- / .about__desc -->
 </div>
 </div> <!-- / .section_about__content -->
@@ -230,13 +230,46 @@
   <div class="best-rooms__content">
    <div class="row">
     <?php foreach ($list_kamar as $lk) { ?>
+    <?php 
+      if (!empty($this->session->userdata('checkin'))) {
+        $ci = date('Y-m-d',strtotime($this->session->userdata('checkin')));
+      }else{
+        $ci = date('Y-m-d');
+      }
+      
+      if (!empty($this->session->userdata('checkout'))) {
+        $co = date('Y-m-d',strtotime($this->session->userdata('checkout')));
+      }else{
+        $co = date('Y-m-d', strtotime('+1 day'));
+      }
+      $stop='true'; 
+      $harga=0;
+      $j=0;
+      while ($stop=='true') {
+          $stop='false';
+        if ($ci==$co) {
+          $stop='false';
+        }else{
+        $j++;
+          $weekDay = date('N', strtotime($ci));
+          if ($weekDay == 0 || $weekDay == 6){
+            $harga+=$lk->hight_kamar;
+          }else{
+            $harga+=$lk->low_kamar;
+          }
+          $stop='true';
+          $ci = date('Y-m-d', strtotime($ci.'+1 day'));
+        }
+      }
+      $total=$harga/$j;
+      ?>
     <div class="col-sm-6">
      <figure class="best-rooms__item">
       <img src="<?php echo base_url().'assets/' ?>images/kamar/<?php echo $lk->nama_gambar_kamar ?>" class="img-responsive" alt="<?php echo $lk->nama_kamar ?>">
       <figcaption>
        <h3><?php echo $lk->nama_kamar ?></h3>
        <div class="item__price">
-        <?php echo 'RP.'.$lk->hight_kamar ?> <small>/ Malam</small>
+        <?php echo 'RP.'.$total ?> <small>/ Malam</small>
       </div>
       <p class="item__desc"><?php echo substr($lk->deskripsi_kamar, 0,100) ?></p>
       <a href="<?=site_url('home/tampil_room_detail/'.$lk->id_kamar);?>" class="btn-book">Detail <i class="icon ion-chevron-right"></i><i class="icon ion-chevron-right"></i></a>

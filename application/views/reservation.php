@@ -1,4 +1,4 @@
-section header -->
+
 <section class="section__header">
 	<div class="container">
 		<div class="row">
@@ -28,18 +28,8 @@ section header -->
 				<div class="booking__details-body">
 					<p class="subheading">Detail Pesanan</p>
 					<h2 class="section__heading">Kamar yang dipilih</h2> 
-					<!-- <ul class="details-info">               
-						<li> -->
-							<label>Check in : </label>
-							<p><?php echo date('l, Y-m-d'); ?></p>
-						<!-- </li>
-						<li> -->
-							<label>Check out</label>
-							<p><?php echo date('l, Y-m-d', strtotime('+1 day')); ?></p>
-						<!-- </li>
-					</ul> -->
-					<hr>
-					<figure class="room__details">
+					<div id="list"></div>
+					<!-- <figure class="room__details">
 						<figcaption>
 							<h3>Double room</h3>
 							<div class="room__price">
@@ -47,50 +37,123 @@ section header -->
 							</div>
 							<p class="room__desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis mollitia voluptas vero vel eligendi sint.</p>
 						</figcaption>
-					</figure> <!-- / .room__details -->
-					<ul class="details-info">    
-						<li>
-							<label>Adult</label>
-							<select name="form-adults" id="form-adults" class="form-control">
-								<option value="1">1 Adult</option>
-								<option value="2" selected="">2 Adults</option>
-								<option value="3">3 Adults</option>
-								<option value="4">4 Adults</option>
-							</select>
-							<span class="help-block"></span>
-						</li>
-						<li>
-							<label>Children</label>
-							<select name="form-children" id="form-children" class="form-control">
-								<option value="0" selected="">0 Child</option>
-								<option value="1">1 Child</option>
-								<option value="2">2 Children</option>
-							</select>
-							<span class="help-block"></span>
-						</li>
-						<li class="total-price">
-							<label>Total price</label>
-							<p>$ 515</p>
-						</li>
-					</ul>
-					<hr>
-					<table>
-						<tr>
+					</figure> 
+					<ul class="details-info">
+		                <li>
+		                  <label>Check in</label>
+		                  <p>2017-04-09</p>
+		                </li>
+		                <li>
+		                  <label>Check out</label>
+		                  <p>2017-04-18</p>
+		                </li>
+		                <li>
+		                  <label>Adults</label>
+		                  <p>2 Person</p>
+		                </li>
+		                <li>
+		                  <label>Children</label>
+		                  <p>1 Chind</p>
+		                </li>
+		                <li>
+		                  <label>Nights</label>
+		                  <p>9 Nights</p>
+		                </li>
+		                <li>
+		                  <label>Services</label>
+		                  <p>$ 65</p>
+		                </li>
+		                <li class="total-price">
+		                  <label>Total price</label>
+		                  <p>$ 515</p>
+		                </li>
+		            </ul> -->
+
+					<!-- <hr> -->
+					<!-- <table> -->
+						<!-- <tr>
 							<td><label>Biaya Kamar</label></td>
 							<td><label>&nbsp:&nbsp</label></td>
-							<td>Rp.1000000</td>
+							<td>Rp.<div id="biaya"></div></td>
 						</tr>
 						<tr>
 							<td><label>Pajak</label></td>
 							<td><label>&nbsp:&nbsp</label></td>
-							<td>Rp.100000</td>
-						</tr>
-						<tr>
-							<td><label>Total Keseluruhan</label></td>
-							<td><label>&nbsp:&nbsp</label></td>
-							<td>Rp.1100000</td>
-						</tr>
-					</table>
+							<td>Rp.<div id="pajak"></div></td>
+						</tr> -->
+						<!-- <tr> -->
+							<ul class="details-info">
+								<li class="total-price">
+				                  <label>Total Keseluruhan</label>
+				                  <p id="total"></p>
+				                </li>
+				            </ul>
+						<!-- </tr> -->
+					<!-- </table> -->
+
+
+		            <script type="text/javascript">
+		            	$(document).ready(function () {
+		            		tampil();
+		            	});
+		            	function tampil() {
+		            		var idk = '<?php if (!empty($this->session->userdata("id_kpesan"))) { echo $this->session->userdata("id_kpesan");}else{ echo "0";} ?>';
+		            		var div = document.getElementById('list');
+		            		var t = document.getElementById('total');
+		            		if (idk==0) {
+		            			div.innerHTML = 'Tidak ada kamar yang anda pesan.';
+		            			t.innerHTML = '<p>RP.0</p';
+				            			console.log(1);
+		            		}else{
+		            			$.ajax({
+					            url : "<?php echo site_url('home/list_keranjang')?>/" + idk,
+					            type: "GET",
+					            dataType: "JSON",
+					            success: function(dlistk)
+					            {
+				            			console.log(dlistk);
+					            	if (dlistk==0) {
+					            		div.innerHTML = 'Tidak ada kamar yang anda pesan.';
+				            			t.innerHTML = '<p>RP.0</p';
+				            			console.log(2);
+					            	}else{
+				            			console.log(3);
+				            			var tot = 0;
+				            			for (var i = 0; i < dlistk.length; i++) {
+					            			div.innerHTML += '<hr><figure class="room__details"><figcaption><h3>'+dlistk[i]['nama_kamar']+'</h3><div class="room__price"><a href="<?php echo base_url('home/keranjang_hapus') ?>/'+dlistk[i]['id_kdet_pesan']+'" onclick="return confirm(\'Anda yakin menghapus data?\'); return false;"><i class="icon ion-trash-a"></i></a></div><p class="room__desc">'+dlistk[i]['deskripsi_kamar']+'</p></figcaption></figure><ul class="details-info"><li><label>Tanggal Datang</label><p>'+dlistk[i]['checkin_kdet_pesan']+'</p></li><li><label>Tanggal Pergi</label><p>'+dlistk[i]['checkout_kdet_pesan']+'</p></li><li><label>Dewasa</label><p>'+dlistk[i]['dewasa_kdet_pesan']+'</p></li><li><label>Anak</label><p>'+dlistk[i]['anak_kdet_pesan']+'</p></li><li class="total-price"><label>Harga</label> : RP.'+dlistk[i]['harga_kdet_pesan']+'</li></ul>';
+					            			tot+=parseInt(dlistk[i]['harga_kdet_pesan']);
+					            		}
+
+				            			t.innerHTML = 'RP.'+tot;
+					            	}
+					            },
+				        			error: function (jqXHR, textStatus, errorThrown)
+				        		{
+				            		alert('Error get data from ajax');
+				        		}
+				    		});
+		            		}// body...
+		            	}
+		            	function hapus(id) {
+		            		$.ajax({
+					            type: "POST",
+					            url: '<?php echo base_url('home/keranjang_hapus/'); ?>/'+id,
+					            dataType: "JSON",
+					            success: function (data) {
+					            	var div = document.getElementById('list');
+		            				var t = document.getElementById('total');
+		            				var URL = '<?php echo base_url('home/tampil_reservation') ?>'
+		            				div.innerHTML='';
+		            				t.innerHTML='';
+		            				$('#list').load(document.URL +  ' #list');
+		            				tampil();
+					            },
+					            error: function () {
+					                alert("Error!!!");
+					            }
+					        });
+		            	}
+		            </script>
 		</div> <!-- .booking__details-body -->
 	</div>
 	<div class="col-sm-7 col-sm-pull-5 col-md-8 col-md-pull-4">
@@ -105,44 +168,7 @@ section header -->
 			<!-- Please carefully read the README.pdf file in order to setup the PHP reservation form properly -->
 
 			<form id="reservation-form_sendemail" class="reservation__form" data-animate-in="animateUp">
-						<!-- <div class="col-sm-12 col-md-6">
-							<div class="form-group">
-								<label for="check-in" class="sr-only">Arrival date</label>
-								<input type="date" name="check-in" class="form-control" id="check-in" value="2017-04-09">
-								<span class="help-block"></span>
-							</div>
-						</div> -->
-						<!-- <div class="col-sm-12 col-md-6">
-							<div class="form-group">
-								<label for="check-out" class="sr-only">Departure date</label>
-								<input type="date" name="check-out" class="form-control" id="check-out" value="2017-04-18">
-								<span class="help-block"></span>
-							</div>
-						</div> -->
-						<!-- <div class="col-sm-12 col-md-6">
-							<div class="form-group">
-								<label for="form-adults" class="sr-only">Adults</label>
-								<select class="form-control" name="form-adults" id="form-adults">
-									<option value="1" selected="">Adults</option>
-									<option value="2">1 Adult</option>
-									<option value="3">2 Adults</option>
-									<option value="4">3 Adults</option>
-								</select>
-								<span class="help-block"></span>
-							</div>
-						</div>
-						<div class="col-sm-12 col-md-6">
-							<div class="form-group">
-								<label for="form-children" class="sr-only">Children</label>
-								<select class="form-control" name="form-children" id="form-children">
-									<option value="1" selected="">Children</option>
-									<option value="2">1 Child</option>
-									<option value="3">2 Children</option>
-									<option value="4">3 Children</option>
-								</select>
-								<span class="help-block"></span>
-							</div>
-						</div> -->
+						
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
 								<label for="first-name" class="sr-only">First name </label>
@@ -213,39 +239,9 @@ section header -->
 									<option value='<?php echo $i?>'><?=$i?></option>
 									<?php } } ?>
 
-									<!-- <option value="2">00</option>
-									<option value="3">01</option>
-									<option value="4">02</option>
-									<option value="5">03</option>
-									<option value="6">04</option>
-									<option value="7">05</option>
-									<option value="8">06</option>
-									<option value="9">07</option>
-									<option value="10">08</option>
-									<option value="11">09</option>
-									<option value="12">10</option>
-									<option value="13">11</option>
-									<option value="14">12</option>
-									<option value="15">13</option>
-									<option value="16">14</option>
-									<option value="17">15</option>
-									<option value="18">16</option>
-									<option value="19">17</option>
-									<option value="20">18</option>
-									<option value="21">19</option>
-									<option value="22">20</option>
-									<option value="23">21</option>
-									<option value="24">22</option> -->
 								</select>
 							</div>
 						</div>
-						<!-- <div class="col-sm-12 col-md-6">
-							<div class="form-group">
-								<label for="zip-code" class="sr-only">Zip Code</label>
-								<input type="text" name="zip-code" class="form-control" id="zip-code" placeholder="Zip code">
-								<span class="help-block"></span>
-							</div>
-						</div> -->
 						<div class="col-sm-12">
 							<div class="form-group">
 								<label for="requirements" class="sr-only">Special requirements</label>
