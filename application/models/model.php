@@ -142,12 +142,12 @@ class Model extends CI_Model {
 		 				->get('tm_fasilitas f');			
 	}
 	/////------------------------reservasi
-	public function get_id_kp()
+	public function get_id($tabel,$id)
 	{
-		$this->db->select('id_kpesan')
-				 ->order_by('id_kpesan','DESC')
+		$this->db->select($id)
+				 ->order_by($id,'DESC')
 				 ->limit(1);
-		return $this->db->get('tk_pesan');
+		return $this->db->get($tabel);
 	}
 	public function add($tabel,$data)
 	{
@@ -161,6 +161,7 @@ class Model extends CI_Model {
 	{
 		return $this->db->join('tk_det_pesan dp','dp.id_kpesan=p.id_kpesan')
 						->join('tm_kamar tk','tk.id_kamar=dp.id_kamar')
+						->where('p.id_kpesan',$idk)
 						->get('tk_pesan p');
 	}
 }

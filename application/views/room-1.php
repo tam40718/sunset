@@ -156,7 +156,7 @@
                 <?php echo $lk->fasilitas_kamar ?>
                 <!-- <a href="#" onclick="fs('<?php echo $lk->id_kamar ?>')" class="btn btn-rooms">fasilitas</a> -->
                 <a href="<?=site_url('home/tampil_room_detail/'.$lk->id_kamar);?>" class="btn btn-rooms">Detail</a>
-                <a href="<?=site_url('home/tampil_room_detail');?>" class="btn btn-rooms">Pesan</a>
+                <a href="<?=site_url('home/pesan/'.$lk->id_kamar);?>" class="btn btn-rooms">Pesan</a>
               </div> <!-- / .rooms__desc -->
             </div>
           </div> <!-- .rooms__item -->

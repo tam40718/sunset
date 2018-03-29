@@ -158,78 +158,88 @@
 	</div>
 	<div class="col-sm-7 col-sm-pull-5 col-md-8 col-md-pull-4">
 		<div class="reservation__form-body">
-			<p class="subheading">Booking form</p>
-			<h2 class="section__heading">Personal info</h2>
-			<p class="section__subheading">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere nulla ea doloremque tenetur quidem odit repellat omnis beatae obcaecati tempora.</p>
+			<p class="subheading">Formulir Pemesanan</p>
+			<h2 class="section__heading">Informasi Pribadi</h2>
+			<!-- <p class="section__subheading"></p> -->
 
 			<!-- Alert message -->
 			<div class="alert" id="form_reservation" role="alert"></div>
 
 			<!-- Please carefully read the README.pdf file in order to setup the PHP reservation form properly -->
 
-			<form id="reservation-form_sendemail" class="reservation__form" data-animate-in="animateUp">
+			<form id="reservation-form_sendemail" class="reservation__form" method="post" action="<?php echo base_url('home/pesan_proses') ?>" data-animate-in="animateUp">
 						
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="first-name" class="sr-only">First name </label>
-								<input type="text" name="first-name" class="form-control" id="first-name" placeholder="Name*" required>
+								<label for="first-name">Nama Depan* </label>
+								<input type="text" name="first_name" class="form-control" id="first-name" placeholder="Nama Depan*" required>
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="last-name" class="sr-only">Last name</label>
-								<input type="text" name="last-name" class="form-control" id="last-name" placeholder="Surname*" required>
+								<label for="last-name">Nama Belakang*</label>
+								<input type="text" name="last_name" class="form-control" id="last-name" placeholder="Nama Belakang*" required>
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="email" class="sr-only">Email</label>
+								<label for="email">E-mail*</label>
 								<input type="email" name="email" class="form-control" id="email" placeholder="E-mail*" required>
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="phone" class="sr-only">Phone</label>
-								<input type="tel" name="phone" class="form-control" id="phone" placeholder="Confirm Email*" required>
+								<label for="phone">Confirm Email*</label>
+								<input type="tel" name="phone" class="form-control" placeholder="Confirm E-mail*" oninput="checkcp(this)" required>
+								<span class="help-block"></span>
+								<script language='javascript' type='text/javascript'>
+							    function checkcp(inputcp) {
+							        if (inputcp.value != document.getElementById('email').value) {
+							            inputcp.setCustomValidity('Email harus cocok');
+							        }else {
+							            inputcp.setCustomValidity('');
+							        }
+							    }
+								</script>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-6">
+							<div class="form-group">
+								<label for="address-line1">Kode Pos</label>
+								<input type="text" name="kodepos" class="form-control" id="address-line1" placeholder="Kode Pos">
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="address-line1" class="sr-only">Address line 1</label>
-								<input type="text" name="address-line1" class="form-control" id="address-line1" placeholder="Postal Code">
+								<label for="address-line2">Negara*</label>
+								<input type="text" name="negara" class="form-control" id="address-line2" placeholder="Negara*" required>
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="address-line2" class="sr-only">Address line 2</label>
-								<input type="text" name="address-line2" class="form-control" id="address-line2" placeholder="Country*" required>
+								<label for="state">Telepon</label>
+								<input type="text" name="telepon" class="form-control" id="telepon" placeholder="Nomor Telepon">
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="state" class="sr-only">State / Region</label>
-								<input type="text" name="state" class="form-control" id="state" placeholder="Telephone">
+								<label for="city">Nomor Ponsel* </label>
+								<input type="text" name="hp" class="form-control" id="hp" placeholder="Nomor Ponsel*">
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12 col-md-6">
 							<div class="form-group">
-								<label for="city" class="sr-only">City</label>
-								<input type="text" name="city" class="form-control" id="city" placeholder="Mobile Phone">
-								<span class="help-block"></span>
-							</div>
-						</div>
-						<div class="col-sm-12 col-md-6">
-							<div class="form-group">
-								<label for="form-arrival-time" class="sr-only">Arrival Time</label>
-								<select class="form-control" name="form-arrival-time" id="form-arrival-time">
-									<option value="0">Arrival Time</option>
+								<label for="form-arrival-time">Estimasi Jam Datang</label>
+								<input type="time" name="jam_datang" placeholder="Jam Datang" class="form-control">
+								<!-- <select class="form-control" name="jam_datang" id="form-arrival-time">
+									<option value="0">Jam Datang</option>
 									<option value="1">00</option>
 									
 									<?php for($i=1; $i<24; $i++) { ?>
@@ -239,40 +249,57 @@
 									<option value='<?php echo $i?>'><?=$i?></option>
 									<?php } } ?>
 
-								</select>
+								</select> -->
 							</div>
 						</div>
 						<div class="col-sm-12">
 							<div class="form-group">
-								<label for="requirements" class="sr-only">Special requirements</label>
-								<textarea name="requirements" class="form-control" rows="8" id="requirements" placeholder="Comments"></textarea>
+								<label for="requirements">Komentar</label>
+								<textarea name="komentar" class="form-control" rows="8" id="requirements" placeholder="Komentar"></textarea>
 								<span class="help-block"></span>
 							</div>
 						</div>
 						<div class="col-sm-12">
-							<p>Have you been at our property before?</p>
+							<p>Apakah anda pernah menginap disini sebelumnya.</p>
 							<div class="col-sm-2" style="padding-left: 0px; margin-left: 0px; margin-bottom: 18px">
-								<select class="form-control" name="" id="">
+								<select class="form-control" name="pernah">
 									<option value="0"></option>
-									<option value="1">No</option>
-									<option value="2">Yes</option>
+									<option value="1">Tidak</option>
+									<option value="2">Ya</option>
 								</select>
 							</div>
 						</div>
-						<div class="col-sm-12">
+						<!-- <div class="col-sm-12">
 							<p>
 								<input type="checkbox" name="checkbox"> I want to receive deals and the latest news by email
 							</p>
-						</div>
+						</div> -->
 						<div class="col-sm-12">
 							<p>
-								<input type="checkbox" name="checkbox"> I have read and accept <a href="#" class="conditions">the terms and conditions.</a>
+								<input type="checkbox" name="checkbox" required> Saya telah membaca dan menyetujui <a href="#"  data-toggle="modal" data-target="#term" class="conditions">syarat dan ketentuan.</a>
 							</p>
-							<button type="submit" class="btn btn-booking">Book now by email</button>
+							<button type="submit" class="btn btn-booking">Pesan Sekarang Melalui Email</button>
 						</div>
 					</form> <!-- .reservation__form -->
 				</div> <!-- .reservation__form-body -->
 			</div>
 		</div> <!-- / .row -->
 	</div> <!-- / .container -->
-    </section> <!-- / .section reservation
+    </section> <!-- / .section reservation-->
+    <div class="modal fade" id="term" tabindex="-1" role="dialog">
+		  <div class="modal-dialog modal-lg" role="document">
+		    <div class="modal-content">
+		        <div class="modal-header" style="background-color: grey">
+		          <button type="button" class="close" data-dismiss="modal">&times;</button>
+		          <h4 class="modal-title" style="color: white">Syarat dan Ketentuan</h4>
+		        </div>
+		        <div class="modal-body">
+		          <p>Privasi dan keamanan informasi pribadi Anda sangat penting bagi kami. Kami tidak membagikan informasi pribadi Anda tanpa izin Anda. Kami sangat menghargai kepercayaan Anda, dan kami berusaha untuk melindungi kerahasiaan dan penggunaan setiap informasi pribadi yang Anda berikan kepada kami.</p>
+		        </div>
+		        <div class="modal-footer">
+		          <button type="button" class="btn btn-danger" data-dismiss="modal"><span style="color: black">Tutup</span></button>
+		        </div>
+		    </div> <!-- .modal-content -->
+		  </div> <!-- .modal-dialog -->
+		</div> <!-- .modal -->
+		

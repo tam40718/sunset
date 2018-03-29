@@ -273,7 +273,7 @@ class Home extends CI_Controller {
 		if (!empty($this->session->userdata('id_kpesan'))) {
 			$id_kpesan = $this->session->userdata('id_kpesan');
 		}else{
-			$id_kpesan = $this->id_otok();
+			$id_kpesan = $this->id_oto('IKP','tk_pesan','id_kpesan');
 			$data_kpesan['id_kpesan'] = $id_kpesan;
 			$data_kpesan['tgl_kpesan'] = date('Y-m-d');
 			$this->Model->add('tk_pesan',$data_kpesan);
@@ -292,19 +292,51 @@ class Home extends CI_Controller {
 
 	public function pesan($id_kamar)
 	{
+		$km = $this->Model->kamar_id($id_kamar)->row();
 		$data_det_pesan['id_kamar'] = $id_kamar;
 		$data_det_pesan['id_kpesan'] = $this->session->userdata('id_kpesan');
-		$data_det_pesan['checkin_kdet_pesan'] = $this->session->userdata('checkin');
-		$data_det_pesan['checkout_kdet_pesan'] = $this->session->userdata('checkout');
+		$data_det_pesan['checkin_kdet_pesan'] = date('Y-m-d',strtotime($this->session->userdata('checkin')));
+		$data_det_pesan['checkout_kdet_pesan'] = date('Y-m-d',strtotime($this->session->userdata('checkout')));
 		$data_det_pesan['dewasa_kdet_pesan'] = $this->session->userdata('dewasa');
 		$data_det_pesan['anak_kdet_pesan'] = $this->session->userdata('anak');
-		echo date('Y-m-d',strtotime($this->session->userdata('checkin')));
-		echo "<br>";
-		if($this->isWeekend(date('Y-m-d',strtotime($this->session->userdata('checkin'))))){
-			echo "ya";
-		}else{
-			echo "tidak";
-		}
+		if (!empty($this->session->userdata('checkin'))) {
+	        $ci = date('Y-m-d',strtotime($this->session->userdata('checkin')));
+	      }else{
+	        $ci = date('Y-m-d');
+	      }
+	      
+	      if (!empty($this->session->userdata('checkout'))) {
+	        $co = date('Y-m-d',strtotime($this->session->userdata('checkout')));
+	      }else{
+	        $co = date('Y-m-d', strtotime('+1 day'));
+	      }
+	      $stop='true'; 
+	      $harga=0;
+	      $j=0;
+	      while ($stop=='true') {
+	          $stop='false';
+	        if ($ci==$co) {
+	          $stop='false';
+	        }else{
+	        $j++;
+	          $weekDay = date('N', strtotime($ci));
+	          if ($weekDay == 0 || $weekDay == 6){
+	            $harga+=$km->hight_kamar;
+	          }else{
+	            $harga+=$km->low_kamar;
+	          }
+	          $stop='true';
+	          $ci = date('Y-m-d', strtotime($ci.'+1 day'));
+	        }
+	      }
+	      $total=$harga/$j;
+	  
+		$data_det_pesan['harga_kdet_pesan'] = $total;
+		// echo "<pre>";
+		// print_r($data_det_pesan);
+		// echo "</pre>";
+		$this->Model->add('tk_det_pesan',$data_det_pesan);
+		$this->tampil_reservation();
 	}
 	function isWeekend($date) {
     	$weekDay = date('N', strtotime($date));
@@ -332,23 +364,43 @@ class Home extends CI_Controller {
 		$this->Model->hapus('tk_det_pesan',$idd);
 		redirect(base_url('home/tampil_reservation'));
 	}
-	public function id_otok()
+	public function pesan_proses()
+	{
+		//----tamu
+		$id_tamu = $this->id_oto('TMU','tm_tamu','id_tamu');
+		$data_tamu['id_tamu'] = $id_tamu;
+		$data_tamu['nama_tamu'] = $this->input->post('first_name').' '.$this->input->post('last_name');
+		$data_tamu['email_tamu'] = $this->input->post('email');
+		$data_tamu['kodepos_tamu'] = $this->input->post('kodepos');
+		$data_tamu['negara_tamu'] = $this->input->post('negara');
+		$data_tamu['telepon_tamu'] = $this->input->post('telepon');
+		$data_tamu['hp_tamu'] = $this->input->post('hp');
+		$data_tamu['datang_tamu'] = $this->input->post('jam_datang');
+		$data_tamu['komentar_tamu'] = $this->input->post('komentar');
+		$data_tamu['pernah_tamu'] = $this->input->post('pernah');
+		$this->Model->add('tm_tamu',$data_tamu);
+		$idk = $this->session->userdata('id_kpesan');
+
+
+	}
+	public function id_oto($kode,$tabel,$id)
 	{
 		$fix=0;
-		$kode = 'IKP';
-		$data = $this->Model->get_id_kp()->result();
-		foreach ($data as $d) {
-			$fix = $d->id_kpesan;
+		$kode = $kode;
+		$fix = $this->Model->get_id($tabel,$id)->row_array();
+		if (empty($fix)) {
+			$fix=0;
 		}
-		if (substr($fix, 4, 6)==date('ymd')) {
-			$angka = substr($fix, 11)+1;
+		if (substr($fix[$id], 4, 6)==date('ymd')) {
+			$angka = substr($fix[$id], 11)+1;
 			$angka_p = str_pad($angka,3,"0",STR_PAD_LEFT);
-			$tgl_angk = substr($fix, 4, 7).$angka_p;
+			$tgl_angk = substr($fix[$id], 4, 7).$angka_p;
 		}else{
 			$tgl_angk = date('ymd').'_001';
 		}
 		return $kode_jadi= $kode.'_'.$tgl_angk;
 	}
+
 
 
 }
